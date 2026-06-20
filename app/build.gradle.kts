@@ -8,12 +8,15 @@ android {
     namespace = "cn.huacheng.safebaiyun"
     compileSdk = 34
 
+    val buildVersionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 2
+    val buildVersionName = System.getenv("VERSION_NAME") ?: "1.1"
+
     defaultConfig {
         applicationId = "cn.huacheng.safebaiyun"
         minSdk = 21
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = buildVersionCode
+        versionName = buildVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
