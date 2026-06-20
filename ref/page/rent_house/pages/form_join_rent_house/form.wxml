@@ -1,0 +1,213 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container" style="z-index:1;">
+    <view class="index-hd">
+        <image class="index-logo" src="https://qv1.pinganbaiyun.cn/img/icon_04.png"></image>
+        <view class="index-desc">欢迎使用平安码丨平安白云</view>
+    </view>
+    <view class="page-body">
+        <form>
+            <view class="page-section" style="display:{{display_apartment}};">
+                <view class="weui-cells__title">入住名称</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{apartment}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">房屋地址</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{street_name}}{{stree_road_alley_name}}{{house_number_name}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="go_to_choose_room" class="page-section" style="display:none;">
+                <picker disabled bindchange="bind_picker_change_room" range="{{room_name_arr}}" value="{{room_name_arr[room_index]}}">
+                    <view class="weui-cells__title">套间</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input disabled class="weui-input" name="input" value="{{room_name_arr[room_index]}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </picker>
+            </view>
+            <view bindtap="bindta_expired_month" class="page-section">
+                <view class="weui-cells__title">{{check_in_date}}</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" style="width:100%;" value="{{data_expired_month[0][month_index]}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <cs_picker bindcancle="cancle_callback_expired_month" bindsure="sure_callback_expired_month" indicatorStyle="height:47px" isShowPicker="{{show_expired_month}}" listData="{{data_expired_month}}" scrollType="normal" titleText="请选择入住时长"></cs_picker>
+            <view bindtap="go_to_choose_room" class="page-section">
+                <view class="weui-cells__title">套间</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <input disabled class="weui-input" placeholder="请选择套间" style="width:100%;" value="{{selected_room_name}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">申请状态</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{state}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">备注</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input bindinput="bind_renter_remark_input" class="weui-input" name="input" value="{{renter_remark}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-area" hidden="{{bt_apply_display}}">
+                <button bindtap="submit_apply" type="primary">申请入住</button>
+            </view>
+            <view class="btn-area" hidden="{{bt_index_display}}">
+                <button bindtap="go_index" type="default">返回首页</button>
+            </view>
+        </form>
+        <view class="mask" wx:if="{{show_letter}}">
+            <view catchtouchmove="check_touch" class="modal-content">
+                <view class="modal-title">
+                    <view class="modal-notice-title">白云公安致辖区居民的一封信</view>
+                    <view class="modal-notice-date">2022年01月17日</view>
+                </view>
+                <scroll-view scrollY bindscrolltolower="check_is_read" catchtouchmove="check_touch" class="main-content">
+                    <view class="modal-content-001">尊敬的居民朋友：<text style="display:inline-block;width:80rpx"></text>欢迎您来到宜居宜商的广州市白云区工作、生活和旅游。当前，白云公安正在开展平安码丨平安白云和安全文明小区建设，竭力为全区提供平安和谐的居住环境。希望您在白云期间，积极参加平安码丨平安白云建设，自觉遵守国家法律法规，警民同心共创美丽、和谐的平安码丨平安白云。 一、如实房屋租赁备案。自房屋租赁签订或居住之日起三个工作日内，通过“平安码丨平安白云”小程序登记租赁房屋信息，不登记或不如实登记的，将依法予以行政处罚。 二、坚决远离黄赌毒。不参与任何黄赌毒等违法犯罪活动，不以任何形式为违法犯罪提供条件，一经发现，公安机关将严厉处罚！ 三、妥善处理矛盾纠纷。处理邻里纠纷、家庭矛盾、感情纠纷时，多一些宽容和理解，小不忍则乱大谋！对打架斗殴、故意伤害、持刀打斗的行为，公安机关将严厉追责！<text style="display:inline-block;"></text>广州市公安局白云区公安分局 2022年01月17日</view>
+                </scroll-view>
+                <view class="modal-btn-wrapper">
+                    <view bindtap="confirm_notice" class="confirm-btn" wx:if="{{is_read}}">已阅</view>
+                    <view class="confirm-btn" wx:if="{{!is_read}}">请滑动完成阅读</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_location}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">拒绝授权可能会影响平安码丨平安白云部分功能使用 请授权</view>
+        </view>
+        <view class="modal-footer">
+            <button bindopensetting="get_role_result" class="modal_button" openType="openSetting" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <template is="foot" data></template>
+</view>
+<mp-halfScreenDialog bindbuttontap="buttontap_calendar" buttons="{{buttons_calendar}}" maskClosable="{{false}}" show="{{show_dialog_calendar}}" subTitle="" tips="">
+    <view slot="title">请选择入住、退房时间</view>
+    <view slot="desc">
+        <view style="position:fixed;top:120rpx;background:#F5F5F5;font-size:30rpx;">
+            <view class="layout-flex row" style="background-color:#F5F5F5;">
+                <text class="date-week" style="width:{{systemInfo.windowWidth/7-10}}px;height:20px" wx:for="{{weekStr}}" wx:key="index">
+                    <text wx:if="{{item!=='日'&&item!=='六'}}">{{item}}</text>
+                    <text class="week" wx:if="{{item==='日'||item==='六'}}">{{item}}</text>
+                </text>
+            </view>
+        </view>
+        <view style="margin-top:60rpx;"></view>
+        <scroll-view bindscrolltolower="lower" bindscrolltoupper="upper" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" scrollY="true" style="height:600rpx;padding:0;">
+            <view style="padding:30rpx 0" wx:for="{{dateList}}" wx:for-item="dateItem" wx:key="index">
+                <view class="date-year-month" style="text-align:center;font-size:35rpx;">{{dateItem.year}}年{{dateItem.month}}月</view>
+                <view class="layout-flex row" style="flex-wrap:wrap;margin-top:30rpx;">
+                    <view bindtap="onPressDate" class="date-day {{item.day<=0?'bgwhite':item.class}}" data-day="{{item.day}}" data-month="{{dateItem.month}}" data-year="{{dateItem.year}}" style="width:{{systemInfo.windowWidth/7-10}}px;height:{{systemInfo.windowWidth/7}}px;" wx:for="{{dateItem.days}}" wx:key="index">
+                        <view class="item-days">
+                            <text style="font-size:28rpx;">{{item.day>0?item.daytext?item.daytext:item.day:''}}</text>
+                            <text style="font-size:30rpx;" wx:if="{{item.inday}}">入住</text>
+                            <text style="font-size:30rpx;" wx:if="{{item.outday}}">退房</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</mp-halfScreenDialog>
+<mp-halfScreenDialog buttons="{{buttons_room}}" maskClosable="{{false}}" show="{{show_dialog_choose_room}}" subTitle="" tips="">
+    <view slot="title">请选择入住套间</view>
+    <view slot="desc" style="height:800rpx;">
+        <view class="page__bd">
+            <view style="justify-content:center;display:flex;width:100%;heigth:100%;">
+                <input bindinput="bindinput_search_room" class="input-block" placeholder="请输入" placeholderStyle="color: #888888;" value="{{inputVal}}"></input>
+                <image class="sousuo" src="https://qv1.pinganbaiyun.cn/img/img_002_meeting/img_14749_0_1.png"></image>
+            </view>
+        </view>
+        <view class="container_choose_room">
+            <scroll-view class="nav_left" scrollY="true">
+                <view bindtap="switchRightTab" class="nav_left_items {{curNav==item.cate_id?'active':''}}" data-floor="{{item.cate_name}}" data-id="{{item.cate_id}}" data-index="{{index}}" wx:for="{{cateItems}}" wx:key="index">{{item.cate_name}}</view>
+            </scroll-view>
+            <scroll-view bindscrolltolower="lower" bindscrolltoupper="upper" class="nav_right" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" scrollY="true">
+                <view wx:if="{{one_floor_room.length>0}}">
+                    <view class="nav_right_items" wx:for="{{one_floor_room}}" wx:key="index">
+                        <view bindtap="select_one_room" class="select-room" data-is_standard_dyfw="{{item.is_standard_dyfw}}" data-room_code="{{item.room_code}}" data-room_name="{{item.room_name}}">
+                            <image src="{{item.image}}"></image>
+                            <text>{{item.room_name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="nocate" wx:else>
+                    <text>该楼层暂无套间</text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</mp-halfScreenDialog>
+<mp-halfScreenDialog bindbuttontap="buttontap_confirm_join" buttons="{{buttons_joint}}" maskClosable="{{false}}" show="{{show_dialog_join}}" subTitle="" tips="">
+    <view slot="title">您确定入住？</view>
+    <view slot="desc" style="height:400rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/ask.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:30px;margin-top:20px;">{{show_date}}</view>
+        <view style="margin-left:30px;margin-buttom:20px;">{{apartment}}</view>
+        <view style="margin-left:30px;margin-buttom:20px;">{{street_name}}{{stree_road_alley_name}}{{house_number_name}}</view>
+        <view style="margin-left:30px;margin-buttom:20px;">{{selected_room_name}}</view>
+    </view>
+</mp-halfScreenDialog>
+<mp-halfScreenDialog bindbuttontap="buttontap_send_msg" buttons="{{buttons_send_msg}}" maskClosable="{{false}}" show="{{show_ask_send_msg}}" subTitle="" tips="">
+    <view slot="title">申请入住成功</view>
+    <view slot="desc" style="height:400rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:20px;margin-top:20px;">{{show_success_info}}</view>
+        <view style="margin-left:20px;margin-buttom:20px;">您是否允许平安码丨平安白云</view>
+        <view style="margin-left:20px;margin-buttom:20px;">为您发送申请结果消息?</view>
+    </view>
+</mp-halfScreenDialog>
+<mp-halfScreenDialog maskClosable="{{false}}" show="{{show_gd_security}}" subTitle="" tips="">
+    <view slot="title">您确认入住?</view>
+    <view slot="desc" style="height:700rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/ask.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:20px;margin-top:20px;font-size:60rpx;">{{apartment}}</view>
+        <view style="margin-left:20px;margin-top:20px;font-size:60rpx;">{{street_name}}{{stree_road_alley_name}}{{house_number_name}}</view>
+        <view class="yueshengshi">
+            <navigator appId="wx9f75b01dcb4b1a79" extraData="" openType="navigate" path="{{gd_security_path}}" plain="true" style="width:inherit;" target="miniProgram" version="release">
+                <image src="../../../../image/gd_security_live.png" style="margin-left:40rpx;width:94%;height:150rpx;"></image>
+            </navigator>
+        </view>
+    </view>
+</mp-halfScreenDialog>

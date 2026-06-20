@@ -1,0 +1,114 @@
+<view class="container">
+    <view class="head">
+        <view class="headcont">
+            <image class="large-icon" src="{{avatar}}"></image>
+            <view>
+                <view class="yunxiaodun">{{nick_name}}</view>
+                <view bindtap="perfecting_personal_information" style="color:#1C90FF;display:flex;justify-items:center;align-items:center;" wx:if="{{!hide_personal_information}}">完善个人信息<image src="https://qv1.pinganbaiyun.cn/img/img_004_index/more.png" style="width:36rpx;height:36rpx;margin-left:10rpx"></image>
+                </view>
+            </view>
+        </view>
+        <view class="headbg">
+            <image class="headimg" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_bg.png"></image>
+        </view>
+    </view>
+    <view class="btn-area" id="buttonContainer" style="position:absolute;top:200rpx;">
+        <view bindtap="use_barcode_face_check" class="pninfocont bt-10" wx:if="{{!hide_qrcode}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_01.png"></image>我的凭证</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="drop_id_card" class="pninfocont bt-10" type="primary" wx:if="{{!hide_drop}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_02.png"></image>注销</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="apply_id_card" class="pninfocont bt-10" type="primary" wx:if="{{!hide_register}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_03.png"></image>注册</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="bindtap_update_avatar" class="pninfocont bt-10" type="primary" wx:if="{{!hide_qrcode}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_03.png"></image>更新头像</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="bindtap_subscribe" class="pninfocont bt-10" type="primary" wx:if="{{!hide_qrcode}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_04.png"></image>订阅消息</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="go_index" class="pninfocont bt-10" type="primary" wx:if="{{!hide_index}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/pninfo_05.png"></image>{{msg_go_index}}</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+        <view bindtap="toggleModeShow" class="pninfocont bt-10" wx:if="{{!hide_mode}}">
+            <view class="pninfocont">
+                <image class="indexicon" src="https://qv1.pinganbaiyun.cn/img/img_004_index/switch-mode.png"></image>切换模式</view>
+            <view class="rowicon">
+                <image class="indexicon_sm" src="https://qv1.pinganbaiyun.cn/img/img_004_index/arrow-right.png"></image>
+            </view>
+        </view>
+    </view>
+    <view style="position:absolute;top:-200px;left:0px;">
+        <canvas canvasId="id_canvas_img" style="width:100px;height:200px;"></canvas>
+    </view>
+    <mp-halfScreenDialog bindbuttontap="buttontap_send_msg" buttons="{{buttons_send_msg}}" maskClosable="{{false}}" show="{{show_ask_send_msg}}" subTitle="" tips="">
+        <view slot="title">欢迎订阅平安码丨平安白云消息</view>
+        <view slot="desc" style="height:300rpx;">
+            <view style="text-align:center;">
+                <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+            </view>
+        </view>
+    </mp-halfScreenDialog>
+    <van-popup closeable round bind:close="toggleModeHidden" customStyle="width: 710rpx;" show="{{toggleModeVisible}}" title="请选择模式">
+        <view class="toggle-model">
+            <view class="toggle-model-header">
+                <text class="toggle-model-title">请选择模式</text>
+            </view>
+            <view class="toggle-model-item" style="margin-bottom:32rpx;">
+                <image src="https://qv1.pinganbaiyun.cn/img/img_004_index/simple/mode_default.png" style="width:320rpx;height:180rpx;"></image>
+                <view class="model-item-content">
+                    <view class="model-item-content-text">
+                        <text class="model-name">标准模式</text>
+                        <text class="model-remark">信息丰富</text>
+                        <text class="model-remark">功能全面</text>
+                    </view>
+                    <view class="model-item-check">
+                        <radio-group bindchange="radioModelChange">
+                            <radio checked="{{currentMode==='mode_default'}}" style="width:40rpx;height:40rpx;" value="mode_default"></radio>
+                        </radio-group>
+                    </view>
+                </view>
+            </view>
+            <view class="toggle-model-item">
+                <image src="https://qv1.pinganbaiyun.cn/img/img_004_index/simple/mode_simple.png" style="width:320rpx;height:180rpx;"></image>
+                <view class="model-item-content">
+                    <view class="model-item-content-text">
+                        <text class="model-name">长辈模式</text>
+                        <text class="model-remark">字大清晰</text>
+                        <text class="model-remark">操作简单</text>
+                    </view>
+                    <view class="model-item-check">
+                        <radio-group bindchange="radioModelChange">
+                            <radio checked="{{currentMode==='mode_simple'}}" style="width:40rpx;height:40rpx;" value="mode_simple"></radio>
+                        </radio-group>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </van-popup>
+</view>

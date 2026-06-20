@@ -1,0 +1,52 @@
+<view class="container_opendoor">
+    <view class="hasNoAuth" wx:if="{{dataList.length<=0}}">（您的）账户未开通白云门禁权限，请联系门禁点或房东办理</view>
+    <view style="background:rgb(238,238,238);padding:20rpx;display:flex;flex-direcion:row;align-items:center;font-size:30rpx;">
+        <view style="padding-left:15rpx;height:85rpx;width:70%;background:white;border-radius:15rpx;">
+            <input bindinput="handleSearch" placeholder="关键词搜索" style="width:100%;height:100%;" type="text" value="{{search}}"></input>
+        </view>
+        <view bindtap="doneSearch" style="font-size:32rpx;text-align:center;height:80rpx;line-height:80rpx;width:20%;margin-left:20rpx;color:white;background:#2D9DFE;border-radius:15rpx;">搜索</view>
+    </view>
+    <view class="guard-count" wx:if="{{dataList.length>0}}">共{{show_length}}个门禁</view>
+    <view class="itemClass" wx:for="{{dataList}}" wx:key="idx">
+        <view class="one">
+            <view style="font-weight:bold;">{{item.name}}</view>
+            <view>
+                <button bindtap="openDoor" class="tagBtn" data-item="{{item}}">开门</button>
+            </view>
+        </view>
+        <view class="two">
+            <view style="width:130rpx;">地址：</view>
+            <view style="font-size:31rpx;color:rgb(90,90,90)">{{item.address}}</view>
+        </view>
+        <view class="limitTime">
+            <view class="limit">
+                <view class="addressStatic">有效期：</view>
+                <view class="{{item.expireDays>0?item.expireDays<30?'cannot-open':'can-open':'out_date'}}">{{item.expireDays>0?item.expireDays+'天':'已过期'}}</view>
+            </view>
+            <view class="limit">
+                <view class="addressStatic">状态：</view>
+                <view style="font-size:31rpx;color:rgb(90,90,90)">正常</view>
+            </view>
+            <a bind:tap="service_click" data-item="{{item}}" href="#" style="color:red;font-size:31rpx;text-decoration-line:underline;">紧急报修</a>
+            <view bindtap="operationClick" data-item="{{item}}" style="color:#2D9DFE;font-weight:bold;font-size:36rpx;padding:16rpx;" wx:if="{{item.expireDays<=0}}">删除</view>
+        </view>
+        <view class="line"></view>
+    </view>
+    <view style="display:flex;flex-direction:row;align-items:center;justify-content:space-around;background:white;" wx:if="{{show_length>per_page}}">
+        <view bind:tap="prev_page_click" style="background:#2D9DFE;color:white;height:80rpx;line-height:80rpx;border-radius:30rpx;width:38%;text-align:center;">上一页</view>
+        <view bind:tap="next_page_click" style="background:#2D9DFE;color:white;height:80rpx;line-height:80rpx;border-radius:30rpx;width:38%;text-align:center;">下一页</view>
+    </view>
+    <view style="height:240rpx;width:100%;"></view>
+    <view style="position:fixed;top:0;right:0;left:0;bottom:0;background:rgba(0,0,0,0.3);display:flex;flex-direction:row;align-items:center;justify-content:center;" wx:if="{{show_open_yjm}}">
+        <view style="background:white;width:70%;border-radius:15rpx;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:38rpx;position:relative;">
+            <view style="font-weight:bold;font-size:35rpx;margin-bottom:30rpx;">温馨提示</view>
+            <view style="font-size:32rpx;margin-bottom:30rpx;">请点击确认，核实本人粤居码登记居住地址信息。如信息有误，请进入平安码丨平安白云小程序修正</view>
+            <button bind:tap="open_yjm" style="width:65%;height:72rpx;font-size:32rpx;line-height:72rpx;color:rgb(107,107,127);font-weight:bold;">确认</button>
+            <image bind:tap="cancel_pop" src="../image/close_pop.png" style="height:46rpx;width:46rpx;position:absolute;top:0;right:0;"></image>
+        </view>
+    </view>
+    <view style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:fixed;bottom:0;right:0;left:0;height:240rpx;z-index:888;background:white;">
+        <view bind:tap="unbind_phone_guard" style="background:#2D9DFE;color:white;height:80rpx;line-height:80rpx;border-radius:30rpx;width:90%;text-align:center;">退出登录</view>
+        <button openType="feedback" style="background:#2D9DFE;color:white;width:90%;border-radius:30rpx;height:80rpx;line-height:80rpx;">意见反馈</button>
+    </view>
+</view>

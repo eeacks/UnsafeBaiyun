@@ -1,0 +1,96 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="box01">
+    <view class="box">
+        <text class="hd" wx:if="{{document_type_up_img1}}">填写个人身份信息</text>
+        <text class="hd" wx:if="{{document_type_up_img2}}">ID. info</text>
+        <view bindtap="bindPickerChanges" class="document_type" hoverClass="none" hoverStopPropagation="false">
+            <view class="">选择证件类型 select ID. type:</view>
+            <view class="">{{document_type}}</view>
+        </view>
+        <view class="bd">
+            <view class="block-3">
+                <image class="icon" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13651_0_0.png"></image>
+                <view class="group-2">
+                    <view class="container-2">
+                        <view class="outer">
+                            <view class="wrap">
+                                <view class="color"></view>
+                                <view class="color-div"></view>
+                            </view>
+                            <view class="block">
+                                <view class="color-2"></view>
+                                <view class="color-div-2"></view>
+                            </view>
+                            <view class="group">
+                                <view class="color-3"></view>
+                                <view class="color-div-3"></view>
+                            </view>
+                            <view class="container">
+                                <view class="color-4"></view>
+                                <view class="color-div-4"></view>
+                            </view>
+                        </view>
+                        <image class="pic" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13651_0_1.png"></image>
+                    </view>
+                    <view class="block-2">
+                        <view class="color-5"></view>
+                        <view class="color-div-5"></view>
+                    </view>
+                </view>
+                <image class="icon-2" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13651_0_2.png"></image>
+            </view>
+            <view class="title-wrap">
+                <text class="title" wx:if="{{document_type_up_img1}}">上传身份证人像面</text>
+                <text class="title" wx:if="{{document_type_up_img2}}">upload passport</text>
+            </view>
+        </view>
+        <view class="main">
+            <button bindtap="ask_role_first" class="title-2" wx:if="{{document_type_up_img1}}">拍摄身份证此页</button>
+            <button bindtap="ask_role_first" class="title-2" wx:if="{{document_type_up_img2}}">upload passport</button>
+        </view>
+        <view class="ft">
+            <button bindtap="entry_hand" class="manual-input" wx:if="{{document_type_up_img1}}">手动输入</button>
+            <button bindtap="entry_hand" class="manual-input" wx:if="{{document_type_up_img2}}">input ID. info</button>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_camera}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_camera}}">
+    <view>
+        <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindopensetting="get_camera_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary" wx:if="{{document_type_up_img1}}">申请获取摄像头权限</button>
+        <button bindopensetting="get_camera_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary" wx:if="{{document_type_up_img2}}">permit camera role</button>
+    </view>
+    <view>
+        <button bindtap="permission_deny" class="button_role_cancel" plain="true" style="display;background-color:white;color:black;border-color:rgb(222,222,222);">取消cancel</button>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_location}}">
+    <view>
+        <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindopensetting="get_location_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">申请获取位置权限</button>
+    </view>
+    <view>
+        <button bindtap="permission_deny" class="button_role_cancel" plain="true" style="display;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_user_info}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_user_info}}">
+    <view>
+        <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindtap="get_user_info_result" class="button_role_confirm" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary" wx:if="{{document_type_up_img1}}">授权获取用户信息</button>
+        <button bindtap="get_user_info_result" class="button_role_confirm" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary" wx:if="{{document_type_up_img2}}">permit user info</button>
+    </view>
+    <view>
+        <button bindtap="permission_deny" class="button_role_cancel" plain="true" style="display:;background-color:white;color:black;border-color:rgb(222,222,222);">取消cancel</button>
+    </view>
+</view>
+<template is="foot" data></template>

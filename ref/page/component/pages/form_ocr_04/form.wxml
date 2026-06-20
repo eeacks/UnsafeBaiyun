@@ -1,0 +1,73 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container" style="display:{{show_page}};">
+    <template is="head" data="{{title:private_verify_code==''?'第四步:输入短信验证码':'第四步:核验信息'}}"></template>
+    <view class="page-body">
+        <form catchreset="formReset" catchsubmit="formSubmit">
+            <view class="page-section" wx:if="{{private_verify_code==''}}">
+                <view class="weui-cells__title">{{msg}}</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <input bindblur="bindblur_verify_code" bindinput="bindinput_verify_code" class="weui-input" placeholder="请输入短信验证码" type="number" value="{{verify_code}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-area" wx:if="{{private_verify_code==''}}">
+                <button bindtap="submit_verify_code" type="primary">{{private_verify_code==''?'提交验证码':'核验中'}}</button>
+                <button bindtap="get_verify_code" disabled="{{button_disabled}}" type="default">{{button_msg}}</button>
+                <button bindgetphonenumber="get_mobile_phone" class="{{show_button&&reload_phone?'verify-btn':'undisplay'}}" openType="getPhoneNumber">收不到验证码,请点击反馈</button>
+            </view>
+            <view class="btn-area" wx:if="{{!button_disabled}}">
+                <button bindtap="sv_007_drop_last_register_record" type="default">重新核验 Reset</button>
+            </view>
+        </form>
+    </view>
+    <template is="foot" data></template>
+    <view bindtap="hideModal_launch" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_launch}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_launch}}">
+        <view>
+            <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+        </view>
+        <view>
+            <button appParameter="{{app_parameter}}" binderror="launchAppError" class="button_role_confirm" openType="launchApp" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">返回平安码丨平安白云APP</button>
+        </view>
+        <view>
+            <button bindtap="go_index" class="button_role_cancel" plain="true" style="display:true;background-color:white;color:black;border-color:rgb(222,222,222);">返回首页</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_launch_yun_yi_an" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_launch_yun_yi_an}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_launch_yun_yi_an}}">
+        <view>
+            <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+        </view>
+        <view>
+            <navigator appId="wxb09865955963c59d" class="button_role_confirm" extraData="" openType="navigate" path="pages/login/login" plain="true" style="margin-left:45rpx;text-align:center;line-height:73rpx;height:73rpx;color:white;margin-left:126rpx;" target="miniProgram" version="release">返回云易安</navigator>
+        </view>
+        <view>
+            <button bindtap="go_index" class="button_role_cancel" plain="true" style="display:;background-color:white;color:black;border-color:rgb(222,222,222);">返回首页</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_lf_launch" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_lf_launch}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_lf_launch}}">
+        <view>
+            <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+        </view>
+        <view>
+            <navigator appId="wx09105b46430a941a" class="button_role_confirm" extraData="" openType="navigate" path="pages/index/index" plain="true" style="margin-left:45rpx;text-align:center;line-height:73rpx;height:73rpx;color:white;margin-left:126rpx;" target="miniProgram" version="release">返回我的来访</navigator>
+        </view>
+        <view>
+            <button bindtap="go_index" class="button_role_cancel" plain="true" style="display:;background-color:white;color:black;border-color:rgb(222,222,222);">返回首页</button>
+        </view>
+    </view>
+</view>
+<mp-halfScreenDialog bindbuttontap="buttontap_send_msg" buttons="{{buttons_send_msg}}" maskClosable="{{false}}" show="{{show_ask_send_msg}}" subTitle="" tips="">
+    <view slot="title">申请入住成功</view>
+    <view slot="desc" style="height:400rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:20px;margin-top:20px;">{{show_success_info}}</view>
+        <view style="margin-left:20px;margin-buttom:20px;">您是否允许平安码丨平安白云</view>
+        <view style="margin-left:20px;margin-buttom:20px;">为您发送申请结果消息?</view>
+    </view>
+</mp-halfScreenDialog>

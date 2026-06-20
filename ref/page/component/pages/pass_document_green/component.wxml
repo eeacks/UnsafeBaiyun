@@ -1,0 +1,133 @@
+<view class="page">
+    <view>
+        <view class="vague" wx:if="{{flag}}">
+            <image src="{{loading_img}}" style="width:100%;height:100%;position:fixed;" wx:if="{{ad_cover_dispaly_big_img=='none'}} "></image>
+            <mp-halfScreenDialog bindcustomevent_get_mobile="get_mobile_phone" buttons="{{buttons_get_info}}" maskClosable="{{false}}" show="{{show_ask_get_info}}" subTitle="" tips="">
+                <view slot="title" style="text-align:center;">您未进行登录授权，请先登录授权</view>
+                <view slot="desc" style="height:300rpx;">
+                    <view style="text-align:center;">
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+                    </view>
+                </view>
+            </mp-halfScreenDialog>
+            <mp-halfScreenDialog bindbuttontap="get_user_info" buttons="{{buttons_user_info}}" maskClosable="{{false}}" show="{{show_ask_user_info}}" subTitle="" tips="">
+                <view slot="title" style="text-align:center;">请进行用户信息授权</view>
+                <view slot="desc" style="height:300rpx;">
+                    <view style="text-align:center;">
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+                    </view>
+                </view>
+            </mp-halfScreenDialog>
+        </view>
+        <view wx:if="{{!flag&&ad_cover_dispaly_big_img=='none'}}">
+            <image class="bg_img" mode="widthFix" src="{{punch_in_successfully}}"></image>
+            <view class="container">
+                <view class="relative_box">
+                    <view class="name_box flex">
+                        <text class="title_color">姓名：</text>
+                        <text class="content_clolr">{{name}}</text>
+                        <view bindtap="add_family" class="add_family" wx:if="{{show_add_acid_family}}">添加家属</view>
+                        <view bindtap="add_family_vaccine" class="add_family" wx:if="{{show_add_vaccine_family}}">添加家属</view>
+                    </view>
+                    <view class="address_box">
+                        <view class=" flex">
+                            <text class="title_color">{{location_title}}</text>
+                            <text class="content_clolr2">{{company_name}}</text>
+                        </view>
+                        <view class=" flex" wx:if="{{term_of_validity.length>0}}">
+                            <text class="title_color">{{valid_date_title}}</text>
+                            <text class="content_clolr2">{{term_of_validity}}</text>
+                        </view>
+                        <view class=" flex" wx:if="{{create_date.length>0}}">
+                            <text class="title_color">{{scan_date_title}}</text>
+                            <text class="content_clolr2">{{create_date}}</text>
+                        </view>
+                    </view>
+                    <view wx:if="{{isShowOpen}}">
+                        <text class="td">{{devices[0].auth.guardName}}</text>
+                        <button bindtap="CreateBLEConnection" class="btn1">开门</button>
+                    </view>
+                    <view class="qr_code_box_show" wx:if="{{term_of_validity.length>0}}">
+                        <image class="qr_code_img" mode="aspectFit" src="{{qr_code}}"></image>
+                        <view bindtap="go_update_user_info" class="personal_information_btn flex" wx:if="{{!show_book_vaccine&&ad_cover_dispaly_big_img=='none'}}">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">完善个人信息</text>
+                        </view>
+                        <view bindtap="go_questionare_hd" class="personal_information_btn flex" wx:if="{{after_process_param.questionare_hd}}">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">再次填写登记表</text>
+                        </view>
+                        <view bindtap="go_gd_code" class="personal_information_btn flex gd_code">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">粤居码</text>
+                        </view>
+                    </view>
+                    <view class="qr_code_box_hide" wx:if="{{term_of_validity.length==0}}">
+                        <image class="qr_code_img" mode="aspectFit" src="{{qr_code}}"></image>
+                        <view bindtap="go_update_user_info" class="personal_information_btn flex" wx:if="{{!show_book_vaccine&&ad_cover_dispaly_big_img=='none'}}">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">完善个人信息</text>
+                        </view>
+                        <view bindtap="go_questionare_hd" class="personal_information_btn flex" wx:if="{{after_process_param.questionare_hd}}">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">再次填写登记表</text>
+                        </view>
+                        <view bindtap="go_gd_code" class="personal_information_btn flex gd_code">
+                            <image class="icon_1" src="{{icon_1}}"></image>
+                            <text class="color_1">粤居码</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom_btn flex_row_cc"></view>
+            <view class="hehe" wx:if="{{violations.length>0}}">
+                <text>违规记录： {{violations.length}}次</text>
+                <scroll-view class="scroll-vio" scrollY="true">
+                    <view class="hehe-list" wx:for="{{violations}}">
+                        <text>{{item.create_date}}</text>
+                        <text>{{item.company_name}}</text>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="ad_cover" style="height:94%;display:{{ad_cover_dispaly_big_img}};">
+    <image class="ad_cover_img" id="id_img_ad_cover" mode="scaleToFill " src="{{img_src}}" style="width:100%;height:100%;"></image>
+</view>
+<view hoverClass="none" hoverStopPropagation="false" style="display:{{ad_cover_dispaly_big_img}};height:6%;display:flex;align-items:center;justify-content:center;text-align:center;">
+    <button bindtap="finish_read" class="btn_read" style="display:{{ad_cover_dispaly_big_img}};position:fixed;bottom:0rpx;left:30rpx;">我已阅读</button>
+    <button bindtap="next_page" class="btn_read" style="display:{{ad_cover_dispaly_big_img}};position:fixed;bottom:0rpx;right:30rpx;">{{page_info}}</button>
+</view>
+<view class="transparent-title">{{header_title}}</view>
+<mp-halfScreenDialog maskClosable="{{false}}" show="{{show_small_unit}}" subTitle="" tips="">
+    <view slot="title" style="text-align:center;font-size:40prx">请选择应急处置单元登记状态</view>
+    <view slot="desc" style="height:900rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/ask.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:30px;margin-top:10px;font-size:80rpx;">{{company_name}}</view>
+        <view>
+            <button bindtap="choose_small_unit_worker_status" data-value="1" style="background-color:#ff3b30;font-size:60rpx;width:95%;" type="primary">报岗</button>
+        </view>
+        <view>
+            <button bindtap="choose_small_unit_worker_status" data-value="2" style="font-size:60rpx;width:95%;" type="primary">撤岗</button>
+        </view>
+    </view>
+</mp-halfScreenDialog>
+<mp-halfScreenDialog maskClosable="{{false}}" show="{{after_process_param.is_isolate_hotel}}" subTitle="" tips="">
+    <view slot="title" style="text-align:center;font-size:40prx">您是否要进行{{after_process_param.company_name}}报岗</view>
+    <view slot="desc" style="height:900rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/ask.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:30px;margin-top:10px;font-size:80rpx;">{{after_process_param.show_questionare_name}}</view>
+        <view>
+            <button bindtap="choose_isolate_hotel_worker_status" data-value="1" style="background-color:#ff3b30;font-size:60rpx;width:95%;" type="primary">报岗</button>
+        </view>
+        <view>
+            <button bindtap="choose_isolate_hotel_worker_status" data-value="2" style="font-size:60rpx;width:95%;" type="primary">取消</button>
+        </view>
+    </view>
+</mp-halfScreenDialog>
+<mp-toptips delay="10000" msg="{{bleerror}}" show="{{bleerrorb}}" type="error"></mp-toptips>

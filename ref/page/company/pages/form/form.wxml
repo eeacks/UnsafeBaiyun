@@ -1,0 +1,156 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <view class="page-body">
+        <form catchreset="formReset" catchsubmit="formSubmit">
+            <image bindtap="show_company_img" hidden="{{qrcode_display}}" mode="widthFix" src="{{qr_code}}" style="margin-left:100rpx;width:75%;"></image>
+            <view class="page-section">
+                <view class="weui-cells__title">所属派出所</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{SXPCS}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">所属社区</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{SXSQ}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">统一社会信用代码</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{ZCH}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">公司名称</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{GSMC}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">地址</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{DZ}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">法定代表人</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{FDDBR}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">法定代表人身份证号</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{legal_person_id_card}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">营业期限</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{YYQX}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">经营地址</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{standard_address}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">单位类别</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{company_type}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">单位细分</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{company_type_second}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">是否涉外单位</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{is_foreign}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">是否快递代收点</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{is_express}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">审核状态</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{ZT}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-area" hidden="{{bt_apply_display}}">
+                <button bindtap="submit_apply" type="primary">再次申请</button>
+            </view>
+            <view class="btn-area" hidden="{{bt_index_display}}">
+                <button bindtap="go_index" type="primary">返回首页</button>
+            </view>
+        </form>
+    </view>
+    <template is="foot" data></template>
+</view>

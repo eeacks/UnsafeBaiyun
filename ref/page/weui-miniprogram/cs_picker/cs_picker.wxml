@@ -1,0 +1,20 @@
+<view class="full-box {{isOpen?'cur':''}}">
+    <view class="picker">
+        <view class="picker-header" style="{{pickerHeaderStyle}}">
+            <view bindtap="cancle">
+                <text style="{{cancelStyle}}">{{cancelText}}</text>
+            </view>
+            <text style="{{titleStyle}}">{{titleText}}</text>
+            <view bindtap="sure">
+                <text style="{{sureStyle}}">{{sureText}}</text>
+            </view>
+        </view>
+        <picker-view bindchange="_bindChange" bindpickend="_bindpickend" bindpickstart="_bindpickstart" class="picker-content" indicatorStyle="{{indicatorStyle}}" maskStyle="{{maskStyle}}" value="{{value}}">
+            <picker-view-column wx:for="{{columnsData}}" wx:key="index">
+                <view class="picker-line" wx:for="{{item}}" wx:for-item="itemIn" wx:key="index">
+                    <text class="line1" style="{{chooseItemTextStyle}}">{{isUseKeywordOfShow?itemIn[keyWordsOfShow]:itemIn}}</text>
+                </view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<view>
+    <view class="picker_contain">
+        <van-tabs active="{{active}}" bind:change="onTabChange" color="#4a8eff">
+            <van-tab disabled="{{item.disabled}}" sticky="true" title="{{item.name}}" titleStyle="font-size: 40rpx;" wx:for="{{prop_value}}" wx:key="index">
+                <view class="item_contain">
+                    <view bindtap="check_item" class="item" data-json="{{children_item}}" data-level="{{index}}" wx:for="{{item_list[index]}}" wx:for-index="children_index" wx:for-item="children_item" wx:key="children_index">{{children_item.label}}</view>
+                </view>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>

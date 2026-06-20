@@ -1,0 +1,274 @@
+.page {
+    height: 100vh;
+    width: 100vw
+}
+
+.background_image {
+    height: 100%;
+    position: absolute;
+    width: 100%
+}
+
+.content_box {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-top: 28vh;
+    padding: 0 25rpx;
+    position: absolute;
+    width: 93vw
+}
+
+.content_box,.first_row {
+    display: -webkit-flex;
+    display: flex
+}
+
+.first_row,.row {
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin: 10rpx -2rpx
+}
+
+.row {
+    display: -webkit-flex;
+    display: flex
+}
+
+.last_row {
+    margin-bottom: 40rpx
+}
+
+.rzdj {
+    height: 275rpx;
+    width: 330rpx
+}
+
+.box_right {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 287rpx
+}
+
+.box {
+    margin: 0 0 0 30rpx;
+    width: 335rpx
+}
+
+.box,.row_box {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 130rpx
+}
+
+.ls_box,.row_box {
+    margin: 30rpx;
+    width: 650rpx
+}
+
+.ls_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+    height: 130rpx
+}
+
+.ls_row {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 60rpx;
+    padding-top: 15rpx;
+    width: 700rpx
+}
+
+.head_icon {
+    height: 70rpx;
+    padding: 0 30rpx;
+    width: 70rpx
+}
+
+.icon {
+    height: 45rpx;
+    margin: 0 10rpx 0 40rpx;
+    width: 45rpx
+}
+
+.more_icon {
+    height: 40rpx;
+    position: absolute;
+    right: 60rpx;
+    width: 40rpx
+}
+
+.content {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column
+}
+
+.ch_name {
+    font-size: 40rpx;
+    font-weight: 600
+}
+
+.en_name {
+    color: #0a0a0a;
+    font-size: 15rpx
+}
+
+.described_content,.en_name {
+    font-weight: 200;
+    margin-top: -10rpx
+}
+
+.described_content {
+    color: #848484;
+    font-size: 30rpx
+}
+
+.middle_content {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column
+}
+
+.rotate {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg)
+}
+
+.rotate,.rotate_back {
+    transition: all .8s
+}
+
+.first_height_add {
+    height: 280rpx;
+    transition: height .8s ease
+}
+
+.height_add {
+    height: 210rpx
+}
+
+.height_add,.height_add_back {
+    transition: height .8s ease
+}
+
+.mini_menu {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 80rpx;
+    width: 700rpx
+}
+
+.first_menu_box {
+    width: 250rpx
+}
+
+.first_menu_box,.menu_box {
+    background-color: #f7f7f7;
+    border-radius: 15rpx;
+    font-size: 33rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-left: 20rpx;
+    text-align: center
+}
+
+.menu_box {
+    width: 150rpx
+}
+
+.menu_text {
+    color: #2970ed
+}
+
+.first_show_menu {
+    height: 145rpx;
+    line-height: 145rpx
+}
+
+.first_show_menu,.show_menu {
+    overflow: auto;
+    transition: height .8s ease
+}
+
+.show_menu {
+    height: 60rpx;
+    line-height: 60rpx
+}
+
+.show_menu_hide {
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    transition: height .5s ease
+}
+
+.long_row {
+    width: 210rpx!important
+}
+
+.outside_box {
+    background-color: #d3e5ff;
+    border-radius: 30rpx
+}
+
+.outside_box_2 {
+    background-color: #fff6eb;
+    border-radius: 30rpx
+}
+
+.outside_box_3 {
+    background-color: #e2fff9;
+    border-radius: 30rpx
+}
+
+.second_row {
+    letter-spacing: -1rpx;
+    margin-left: 40rpx
+}
+
+.first_menu {
+    margin-left: 40rpx!important
+}
+
+.title {
+    height: 110rpx;
+    width: 300rpx
+}
+
+.title_text {
+    color: #fff;
+    font-size: 50rpx;
+    font-weight: 900;
+    left: -255rpx;
+    position: relative;
+    top: -45rpx
+}
+
+.first_box {
+    margin-top: 0!important
+}

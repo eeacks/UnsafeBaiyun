@@ -1,0 +1,96 @@
+.weui-search-bar {
+    -webkit-text-size-adjust: 100%;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #ededed;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 8px;
+    position: relative
+}
+
+.weui-icon-search {
+    font-size: 14px;
+    height: 1em;
+    line-height: 1em;
+    margin-right: 8px;
+    margin-top: .64em;
+    vertical-align: top
+}
+
+.weui-icon-search_in-box {
+    left: 12px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%
+}
+
+.weui-search-bar__text {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top
+}
+
+.weui-search-bar__form {
+    background: #fff;
+    border-radius: 4px;
+    -webkit-flex: auto;
+    flex: auto;
+    position: relative
+}
+
+.weui-search-bar__box {
+    box-sizing: border-box;
+    padding-left: 32px;
+    padding-right: 32px;
+    position: relative;
+    width: 100%;
+    z-index: 1
+}
+
+.weui-search-bar__input {
+    caret-color: #07c160;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px
+}
+
+.weui-icon-clear {
+    bottom: 0;
+    font-size: 0;
+    padding: 0 12px;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.weui-icon-clear:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 0
+}
+
+.weui-search-bar__label {
+    background: #fff;
+    border-radius: 4px;
+    bottom: 0;
+    color: rgba(0,0,0,.5);
+    left: 0;
+    line-height: 32px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 2
+}
+
+.weui-search-bar__cancel-btn {
+    color: #576b95;
+    line-height: 32px;
+    margin-left: 8px;
+    white-space: nowrap
+}

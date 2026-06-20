@@ -1,0 +1,326 @@
+<view class="page">
+    <image class="background_image" src="./image/bg.jpg"></image>
+    <view class="content_box">
+        <view class="first_row">
+            <view class="outside_box">
+                <view>
+                    <image class="title" src="./image/为民解忧.png"></image>
+                    <span class="title_text">为民解忧</span>
+                </view>
+                <view class="ls_box first_box {{show_go_app_002?'first_height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="by_grid_index" src="./image/网格服务.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="by_grid_index">
+                            <span class="ch_name">有困难，找网格员</span>
+                        </view>
+                        <image bind:tap="show_go_app_002" class="more_icon {{show_go_app_002?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">居住环境有问题立即报</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_002?'first_show_menu':'show_menu_hide'}}" style="flex-wrap:wrap;">
+                        <view bind:tap="f_002_go_mini_app" class="first_menu_box first_menu" data-buzi-type="grid_clue">
+                            <span class="menu_text">报线索</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="first_menu_box" data-buzi-type="grid_billboard">
+                            <span class="menu_text">网格公示牌</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="first_menu_box first_menu" data-buzi-type="grid_address_search" style="margin-top:10rpx;">
+                            <span class="menu_text">地址查询</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="first_menu_box" data-buzi-type="home_gas_check" style="margin-top:10rpx;">
+                            <span class="menu_text">燃气屋主自检</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box {{show_go_app_003?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="tree_hole" src="./image/心理服务.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="tree_hole">
+                            <span class="ch_name">心理服务</span>
+                        </view>
+                        <image bind:tap="show_go_app_003" class="more_icon {{show_go_app_003?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">倾听您的心声，为您提供心理测评及专业帮助</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_003?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box first_menu" data-buzi-type="listen_heard">
+                            <span class="menu_text">心声倾诉</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="mind_test">
+                            <span class="menu_text">心理测评</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="mind_help">
+                            <span class="menu_text">专业求助</span>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box" data-buzi-type="conflict">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/矛盾化解.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">矛盾化解</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">随时随地解决纠纷，为您提供高效专业调解服务</span>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="row">
+            <view class="outside_box_2">
+                <view>
+                    <image class="title" src="./image/政务服务.png"></image>
+                    <span class="title_text">政务服务</span>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box first_box" data-buzi-type="gov_hall">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/政务服务.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">政务办事</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">政府服务，“指”上预约</span>
+                    </view>
+                </view>
+                <view class="ls_box {{show_rent_house?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="go_rent_house" class="icon" src="./image/入住登记.svg"></image>
+                        <view bind:tap="go_rent_house" class="middle_content">
+                            <span class="ch_name">入住登记</span>
+                        </view>
+                        <image bind:tap="show_rent_house" class="more_icon {{show_rent_house?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">人来登记，人走注销</span>
+                    </view>
+                    <view class="mini_menu {{show_rent_house?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="go_rent_house" class="menu_box first_menu" data-buzi-type="renter_house">
+                            <span class="menu_text">我的家</span>
+                        </view>
+                        <view bind:tap="go_rent_house" class="menu_box" data-buzi-type="admin_house">
+                            <span class="menu_text">管理员</span>
+                        </view>
+                        <view bind:tap="go_rent_house" class="menu_box" data-buzi-type="admin_house">
+                            <span class="menu_text">栋长</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box {{show_go_app_007?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="market_admin_index" src="./image/企业服务.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="market_admin_index">
+                            <span class="ch_name">企业服务</span>
+                        </view>
+                        <image bind:tap="show_go_app_007" class="more_icon {{show_go_app_007?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">白云商事，一键好办</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_007?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box  long_rowfirst_menu" data-buzi-type="market_admin_food_shop">
+                            <span class="menu_text">食品经营许可</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box long_row" data-buzi-type="market_admin_leagal_person_confirm">
+                            <span class="menu_text">网监云确认</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="market_admin_online_meeting">
+                            <span class="menu_text">网上听证</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box {{show_go_app_006?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="release_wast_water_index" src="./image/排水申请.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="release_wast_water_index">
+                            <span class="ch_name">排水申请</span>
+                        </view>
+                        <image bind:tap="show_go_app_006" class="more_icon {{show_go_app_006?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">排水许可，线上申请</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_006?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box first_menu" data-buzi-type="release_wast_water_concat">
+                            <span class="menu_text">设施接驳</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="release_wast_water_new">
+                            <span class="menu_text">新办</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="release_wast_water_update">
+                            <span class="menu_text">变更/延期</span>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box first_box" data-buzi-type="market_place">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/智慧农贸.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">智慧市场</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">智慧监管 放心市场</span>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="row last_row">
+            <view class="outside_box_3">
+                <view>
+                    <image class="title" src="./image/便民生活.png"></image>
+                    <span class="title_text">便民生活</span>
+                </view>
+                <view class="ls_box first_box {{show_go_app?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="hospital" src="./image/互联网医院.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="hospital">
+                            <span class="ch_name">挂号就医</span>
+                        </view>
+                        <image bind:tap="show_go_app" class="more_icon {{show_go_app?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">网上问诊，健康守护</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box first_menu" data-buzi-type="hospital">
+                            <span class="menu_text">预约挂号</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="hospital">
+                            <span class="menu_text">门诊缴费</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="hospital">
+                            <span class="menu_text">查报告单</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box first_box {{show_go_app?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="search_house" src="./image/白云租房.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="search_house">
+                            <span class="ch_name">白云租房</span>
+                        </view>
+                        <image bind:tap="show_go_app" class="more_icon {{show_go_app?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">线上租房，安全便捷</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box first_menu" data-buzi-type="search_house_index">
+                            <span class="menu_text">首页</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="search_house_easy_rent">
+                            <span class="menu_text">省心租</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="search_house_I_want">
+                            <span class="menu_text">我要找房</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box {{show_go_app_004?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="go_rent_house" class="icon" data-buzi-type="electric" src="./image/供电服务.svg"></image>
+                        <view bind:tap="go_rent_house" class="middle_content" data-buzi-type="electric">
+                            <span class="ch_name">供电服务</span>
+                        </view>
+                        <image bind:tap="show_go_app_004" class="more_icon {{show_go_app_004?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">用心服务，电力无忧</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_004?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="go_rent_house" class="menu_box first_menu" data-buzi-type="GO_ELECTRIC_METER_FAULT">
+                            <span class="menu_text">停电报障</span>
+                        </view>
+                        <view bind:tap="go_rent_house" class="menu_box" data-buzi-type="GO_ELECTRIC_METER_BIND">
+                            <span class="menu_text">电表绑定</span>
+                        </view>
+                        <view bind:tap="go_rent_house" class="menu_box long_row" data-buzi-type="GO_ELECTRIC_METER_PROVE">
+                            <span class="menu_text">接入证明申请</span>
+                        </view>
+                    </view>
+                </view>
+                <view class="ls_box {{show_go_app_005?'height_add':'height_add_back'}}">
+                    <view class="ls_row">
+                        <image bind:tap="f_002_go_mini_app" class="icon" data-buzi-type="recycle" src="./image/垃圾分类.svg"></image>
+                        <view bind:tap="f_002_go_mini_app" class="middle_content" data-buzi-type="recycle">
+                            <span class="ch_name">垃圾分类</span>
+                        </view>
+                        <image bind:tap="show_go_app_005" class="more_icon {{show_go_app_005?'rotate':'rotate_back'}}" src="./image/下拉.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">垃圾分类，人人有责</span>
+                    </view>
+                    <view class="mini_menu {{show_go_app_005?'show_menu':'show_menu_hide'}}">
+                        <view bind:tap="f_002_go_mini_app" class="menu_box first_menu" data-buzi-type="recycle">
+                            <span class="menu_text">我要报事</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="recycle">
+                            <span class="menu_text">便民地图</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="recycle">
+                            <span class="menu_text">燃气订购</span>
+                        </view>
+                        <view bind:tap="f_002_go_mini_app" class="menu_box" data-buzi-type="home_gas_check">
+                            <span class="menu_text">燃气屋主自检</span>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box" data-buzi-type="people_fair">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/慈善白云.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">慈善服务</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">白云区“善暖白云”慈善平台</span>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box" data-buzi-type="baiyun_news">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/白云新闻.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">白云新闻</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">新闻资讯，一键即达</span>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box" data-buzi-type="house_tax">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/粤税通.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">出租屋税缴纳</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">缴纳房屋租赁税费，多跑网路，少跑马路</span>
+                    </view>
+                </view>
+                <view bind:tap="f_002_go_mini_app" class="ls_box" data-buzi-type="buy_bulk_oil">
+                    <view class="ls_row">
+                        <image class="icon" src="./image/散装汽油-绿.svg"></image>
+                        <view class="middle_content">
+                            <span class="ch_name">散装汽油购买预登记</span>
+                        </view>
+                        <image class="more_icon" src="./image/更多.svg"></image>
+                    </view>
+                    <view class="second_row">
+                        <span class="described_content">点击预登记购买散装汽油</span>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

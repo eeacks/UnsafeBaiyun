@@ -1,0 +1,66 @@
+<view>
+    <image class="bg_img" mode="aspectFill" src="https://qv1.pinganbaiyun.cn/img/background_third_part_app.jpg"></image>
+    <image bindtap="close" class="gb_img" src="https://qv1.pinganbaiyun.cn/img/close_third_pary.png" wx:if="{{look_agreement_type}}"></image>
+    <view class="agreement_content" wx:if="{{look_agreement_type}}">
+        <view class="title">《用户授权协议》</view>
+        <view class="agreement_text">(以下简称“本协议”)是广州市公安局白云分局(以下简称“平安码丨平安白云”或“我们”) 与用户(以下简称“您”)所订立的有效合约。请您先仔细阅读本协议内容，尤其是字体加粗部分。 如您对本协议内容或页面提示信息有疑问，请勿进行下一步操作。您可通过首页的意见反馈进行咨询， 以便我们为您解释和说明。如您通过页面点击或我们认可的其他方式确认本协议即表示您已同意本协议。</view>
+        <view class="agreement_text">1、为了便于您使用第三方的服务，您同意我们将您的用户编号及页面提示的相关信息传递给第三方。 当您使用我们与第三方合作提供的服务，且我们为了向您提供服务而需要收集您的信息时， 您同意第三方将您的用户编号及页面提示的相关信息传递给我们。页面提示上会展示具体授权对象以及授权信息类型， 您的信息将通过加密通道传递。我们会要求第三方严格遵守相关法律法规与监管要求，依法使用您的信息， 并应对您的信息保密。点击授权之后，授权关系长期有效，直至您主动解除。为了更好的保护您的信息安全， 我们采用了信息查询令牌技术。授权有效期内，当您使用被授权方服务时，将激活令牌，被授权方仅在令牌激活期 内方可查询您的信息。激活期届满后，令牌将暂时失效，直至您再次使用被授权方服务时被激活。</view>
+        <view class="agreement_text">2、请您理解，除非页面另行提示，上述第三方服务由该第三方独立运营并独立承担全部责任。 在授权我们向第三方提供您的信息之前，建议您仔细查看第三方的隐私权政策或相关协议约定， 了解信息用途以及第三方的基本情况与数据安全能力，作出您认为适当的选择。因第三方服务或其使用您的 信息而产生的纠纷，或第三方服务违反相关法律法规或协议约定，或您在使用第三方服务过程中遭 受损失的，请您和第三方协商解决。</view>
+        <view class="agreement_text">3、如我们对本协议进行变更，我们会以公告、客户端通知、短信或弹窗等方式(统称“通知”)就协议的 更新向您进行告知，更新内容将在前述通知指定日期开始生效。若您不同意更新后的条款内容，您有 权停止使用相关服务;双方协商一致的，也可另行变更相关服务和对应条款内容。</view>
+        <view class="agreement_text">4、本协议之效力、解释、变更、执行与争议解决均适用中华人民共和国法律。因本协议产生的争议， 均应依照中华人民共和国法律予以处理，并由被告住所地人民法院管辖。</view>
+    </view>
+    <view bindtap="close" catchtouchmove="false" class="mb" hoverClass="none" hoverStopPropagation="false" wx:if="{{show_apply_person_type}}"></view>
+    <mp-halfScreenDialog buttons="{{buttons_room}}" closabled="{{true}}" maskClosable="{{false}}" show="{{show_dialog_choose}}" subTitle="" tips="">
+        <view class="dialog_box" slot="desc">
+            <view class="flex">
+                <view class="blue_yuan">
+                    <image src="{{app_config_data.icon_name}}" style="width:50rpx;height:50rpx;"></image>
+                </view>
+                <view class="text_1">{{app_config_data.app_name}}</view>
+                <view class="text_2">申请</view>
+            </view>
+            <view>
+                <view class="text_3">获取以下权限</view>
+                <view class="color_1">将用于为您提供本应用当前服务</view>
+                <view class="color_1" wx:if="{{app_config_data.face_check}}">该服务将进行人脸核验</view>
+                <view class=" id_card_box">
+                    <view class="flex">
+                        <view class="mar_r15">{{name}}</view>
+                        <view>{{id_card}}</view>
+                        <view bindtap="register_again" class="gh_txt" wx:if="{{registered}}">更换</view>
+                    </view>
+                    <text class="color_2">获取您的姓名和证件号码</text>
+                </view>
+                <view>
+                    <view class="flex">
+                        <view>{{mobile_phone}}</view>
+                    </view>
+                    <text class="color_2">获取您的手机号</text>
+                </view>
+            </view>
+            <view class="btn_box flex">
+                <label class="radio">
+                    <radio bindtap="radioChange" checked="{{checked_type}}" value="r1"></radio>
+                </label>
+                <view bindtap="radioChange">同意</view>
+                <view bindtap="look_agreement" class="color_3">《用户授权协议》</view>
+            </view>
+            <view class="flex">
+                <button bindtap="deny_btn" class="btn1">拒绝</button>
+                <button bindtap="agree_btn" class="btn2">同意</button>
+            </view>
+        </view>
+    </mp-halfScreenDialog>
+    <view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_camera}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_camera}}">
+        <view>
+            <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+        </view>
+        <view>
+            <button bindopensetting="get_camera_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="margin-top:86rpx;background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">申请获取摄像头权限</button>
+        </view>
+        <view>
+            <button class="button_role_cancel" plain="true" style="display:none;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+        </view>
+    </view>
+</view>

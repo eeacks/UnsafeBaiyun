@@ -1,0 +1,24 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <camera binderror="error" devicePosition="{{device_position}}" flash="{{flash}}" style="width:100%;height:{{camera_height}}px;">
+        <cover-image bindtap="" src="https://qv1.pinganbaiyun.cn/img/img_009_register/background1.png" style="width:100%;height:100%;"></cover-image>
+        <cover-view style="top:6%;width:88%;height:38%;margin-left:6%;position:fixed;">
+            <cover-image src="https://qv1.pinganbaiyun.cn/img/img_009_register/ocr.png" style="width:100%;height:100%;"></cover-image>
+        </cover-view>
+        <cover-view style="top:85%;width:100%;text-align:center;background-color:rgba(0, 0, 0, .0);position:fixed;">
+            <cover-view class="box">
+                <cover-image bindtap="chooseimage" class="album" src="https://qv1.pinganbaiyun.cn/img/img_009_register/album.png" style="display:{{show_button}};"></cover-image>
+                <cover-view class="choose">Album</cover-view>
+            </cover-view>
+            <cover-view class="box">
+                <cover-image bindtap="takePhoto" class="takephoto" src="https://qv1.pinganbaiyun.cn/img/img_009_register/capture1.png" style="display:{{show_button}};"></cover-image>
+            </cover-view>
+            <cover-view class="box">
+                <cover-image bindtap="changedevice" class="switch" src="https://qv1.pinganbaiyun.cn/img/img_009_register/change.png" style="display:{{show_button}};"></cover-image>
+                <cover-view class="change">Switch</cover-view>
+            </cover-view>
+        </cover-view>
+    </camera>
+    <canvas canvasId="id_canvas_img" style="top:6%;width:100%;height:50%;position:fixed;z-index:-11;"></canvas>
+</view>

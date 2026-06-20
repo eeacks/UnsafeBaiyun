@@ -1,0 +1,353 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="box01">
+    <view class="box" style="display:none ;background-image:url('https://qv1.pinganbaiyun.cn/img/img_004_index/welcome.png');background-repeat:no-repeat;background-size:100% 100%;height:100vh;padding:0;">
+        <button bindtap="show_rigester_type" style="display:{{show_nowmal_verify_first==false?'block':'none'}};width:80%;border-radius:14px;height:140rpx;line-height:140rpx;color:#368bcc;font-size:50rpx;font-weight:600;top:-10%;">实名核验</button>
+        <button bindtap="weijing_regester_type" style="display:{{show_nowmal_verify_first==false?'block':'none'}};width:80%;border-radius:14px;height:140rpx;line-height:140rpx;color:#368bcc;font-size:50rpx;font-weight:600;top:-10%;">快速核验(仅支持身份证)</button>
+        <button bindtap="weijing_regester_type" style="display:{{show_nowmal_verify_first==true?'block':'none'}};width:80%;border-radius:14px;height:140rpx;line-height:140rpx;color:#368bcc;font-size:50rpx;font-weight:600;top:-10%;">快速核验(仅支持身份证)</button>
+        <button bindtap="show_rigester_type" style="display:{{show_nowmal_verify_first==true?'block':'none'}};width:80%;border-radius:14px;height:140rpx;line-height:140rpx;color:#368bcc;font-size:50rpx;font-weight:600;top:-10%;">实名核验</button>
+    </view>
+    <view class="box" style="display:{{cover_dispaly=='flex'?'none':''}}">
+        <view class="page-body" style="width:90%;">
+            <form catchreset="formReset" catchsubmit="formSubmit">
+                <view style="border-radius:20px;background:white">
+                    <view class="page-section">
+                        <view class="weui-cells__title" style="padding:40rpx 0 0 20rpx">
+                            <span style="color:red;">*</span>证件类型 ID Type</view>
+                        <view class="section">
+                            <picker bindchange="bindPickerChange" range="{{array}}" value="{{index}}">
+                                <view class="picker" style="font-size:28rpx;color:#848484;padding-left:26rpx;border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;">{{array[index]}}</view>
+                                <text class="weui-cells__title" style="color:#1C90FF;font-size:28rpx;position:absolute;right:28rpx;top:76rpx;">选择 Select</text>
+                            </picker>
+                        </view>
+                    </view>
+                    <view bindtap="ask_role_first" class="bd" style="display:none;">
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_009_register/register_pass.png" style="height:100%;width:100%" wx:if="{{index==0}}"></image>
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_009_register/register_pass.png" style="height:100%;width:100%" wx:if="{{index==1}}"></image>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>姓名 Name</view>
+                        <view class="weui-cell weui-cell_input" wx:if="{{index!=1}}">
+                            <view class="weui-cell__bd">
+                                <input bindblur="bindblur_XM" bindinput="bindinput_XM" class="weui-input" name="input" placeholder="请输入您的姓名" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{XM}}"></input>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_input" wx:if="{{index==1}}">
+                            <view class="weui-cell__bd">
+                                <input bindblur="bindblur_first_name" bindinput="bindinput_first_name" class="weui-input" name="input" placeholder="First name" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{first_name}}"></input>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_input" wx:if="{{index==1}}">
+                            <view class="weui-cell__bd">
+                                <input bindblur="bindblur_last_name" bindinput="bindinput_last_name" class="weui-input" name="input" placeholder="Last name" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{last_name}}"></input>
+                            </view>
+                        </view>
+                        <image catchtap="ask_role_first" class="selectImg" src="./img/id_card.svg"></image>
+                    </view>
+                    <view class="page-section" wx:if="{{index==1}}">
+                        <view class="weui-cells__title" style="padding:40rpx 0 10rpx 20rpx">
+                            <span style="color:red;">*</span>性别 Gender</view>
+                        <view class="section">
+                            <picker bindchange="gender_bindPickerChange" range="{{gender_array}}" value="{{g_index}}">
+                                <view class="picker" style="font-size:28rpx;color:#848484;padding-left:26rpx;border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;">{{gender_array[g_index]}}</view>
+                                <text class="weui-cells__title" style="color:#1C90FF;font-size:28rpx;position:absolute;right:28rpx;top:76rpx;">选择 Select</text>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="page-section" wx:if="{{index==1}}">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>国家/地区 Country/Area</view>
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input disabled bindblur="bindblur_country" bindtap="gosearch" class="weui-input" name="input" placeholder="请选择您的国籍" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{searchCountry[country_index]}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>证件号码 ID Number</view>
+                        <view class="weui-cell weui-cell_input" wx:if="{{index==0}}">
+                            <input bindblur="bindblur_ZJHM" bindinput="bindinput_ZJHM" class="weui-input" placeholder="请输入您的证件号码" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="idcard" value="{{ZJHM}}"></input>
+                        </view>
+                        <view class="weui-cell weui-cell_input" wx:if="{{index==1||index==2}}">
+                            <input bindblur="bindblur_ZJHM" bindinput="bindinput_ZJHM" class="weui-input" placeholder="请输入您的证件号码" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="text" value="{{ZJHM}}"></input>
+                        </view>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">居住地址 Live address</view>
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input class="weui-input" disabled="true" name="input" ontap="changeAddress" placeholder="请选择所属街镇" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{street_and_community}}"></input>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input bindblur="bindblur_detail_address" bindinput="bindinput_detail_address" class="weui-input" name="input" placeholder="请输入详细地址" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{detail_address}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page-section" wx:if="{{index==1||index==2}}">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>出生日期 Date of birth</view>
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <picker bindchange="bindDateChange" end="{{enddate}}" mode="date" start="1900-01-01" value="{{birthday}}">
+                                    <input disabled class="weui-input" name="input" placeholder="请选择您的出生日期 Date of Birth" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{birthday}}"></input>
+                                </picker>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page-section" wx:if="{{index==2}}">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>證件有效期 Date of expiry</view>
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <picker bindchange="binchange_expire_date" mode="date" start="enddate" value="{{expired_date}}">
+                                    <input disabled class="weui-input" name="input" placeholder="請選擇證件有效期" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{expired_date}}"></input>
+                                </picker>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="page-section" wx:if="{{index==2}}">
+                        <view class="weui-cells__title" style="padding:40rpx 0 0 20rpx">
+                            <span style="color:red;">*</span>性别 Sex</view>
+                        <view class="section">
+                            <picker bindchange="bindPickerChange_sex" range="{{sex_arr}}" value="{{sex_index}}">
+                                <view class="picker" style="font-size:28rpx;color:#848484;padding-left:26rpx;border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;">{{sex_arr[sex_index]}}</view>
+                                <text class="weui-cells__title" style="color:#1C90FF;font-size:28rpx;position:absolute;right:28rpx;top:76rpx;">選擇 Select</text>
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+                <view style="color:gray;font-size:30rpx;margin-left:35rpx;margin-top:36rpx;" wx:if="{{index==1}}">国内联系人 China contact</view>
+                <view style="border-radius:20px;background:white" wx:if="{{index==1}}">
+                    <view class="page-section">
+                        <view class="weui-cells__title" style="padding:40rpx 0 0 20rpx">
+                            <span style="color:red;">*</span>国内联系人证件类型 ID Type</view>
+                        <view class="section">
+                            <picker bindchange="c_bindPickerChange" range="{{c_array}}" value="{{c_index}}">
+                                <view class="picker" style="font-size:28rpx;color:#848484;padding-left:26rpx;border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;">{{c_array[c_index]}}</view>
+                                <text class="weui-cells__title" style="color:#1C90FF;font-size:28rpx;position:absolute;right:28rpx;top:76rpx;">选择 Select</text>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>国内联系人证件号码 ID Number</view>
+                        <view class="weui-cell weui-cell_input">
+                            <input bindblur="bindblur_contacts_ZJHM" bindinput="bindinput_contacts_ZJHM" class="weui-input" placeholder="请输入国内联系人证件号码" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="text" value="{{contacts_ZJHM}}"></input>
+                        </view>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>国内联系人姓名 Name</view>
+                        <view class="weui-cell weui-cell_input">
+                            <input bindinput="bindinput_contacts_name" class="weui-input" placeholder="请输入国内联系人姓名" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="text" value="{{contacts_name}}"></input>
+                        </view>
+                    </view>
+                    <view class="page-section">
+                        <view class="weui-cells__title">
+                            <span style="color:red;">*</span>国内联系人手机号 Phone</view>
+                        <view class="weui-cell weui-cell_input">
+                            <input bindinput="bindinput_contacts_phone" class="weui-input" placeholder="请输入国内联系人手机号" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="number" value="{{contacts_phone}}"></input>
+                        </view>
+                    </view>
+                    <view class="page-section" style="margin-top:5rpx;margin-bottom:30rpx;">
+                        <view class="weui-cells__title" style="padding:10rpx 0 0 20rpx;font-size:32rpx;">
+                            <span style="color:red;">*</span>国内联系人关系 Personal Relationship</view>
+                        <view class="section">
+                            <picker bindchange="r_bindPickerChange" range="{{r_array}}" value="{{r_index}}">
+                                <view class="picker" style="font-size:28rpx;color:#848484;padding-left:26rpx;border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;">{{relationship}}</view>
+                                <text class="weui-cells__title" style="color:#1C90FF;font-size:28rpx;position:absolute;right:28rpx;top:42rpx;">选择 Select</text>
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+                <view style="border-radius:20px;background:white">
+                    <view class="page-section">
+                        <view class="weui-cells__title" style="padding-top:30rpx">
+                            <span style="color:red;">*</span>电话号码 Tel.<view hidden="{{hidden_get_mobile_button}}" style="width:45%;float:right;">
+                                <button bindgetphonenumber="get_mobile_phone" openType="getPhoneNumber" style="width:100%;color:#4a8eff;font-size:21rpx;background-color:#FFFFFF;" type="primary">
+                                    <text>Get the bound phone</text>
+<view class="text2">获取绑定手机</view>
+                                </button>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_input">
+                            <view style="width:100%">
+                                <input bindblur="bindblur_mobile_phone" bindinput="bindinput_mobile_phone" class="weui-input" disabled="{{mobile_button_disabled}}" placeholder="手机号码接收短信验证码" placeholderStyle="font-size:28rpx" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" type="number" value="{{mobile_phone}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="page-section" style="padding-left:20rpx" wx:if="{{index==1||index==2}}">
+                    <radio-group bindchange="change_register_type" class="radio-group" style="margin-top:40rpx;">
+                        <label class="radio">
+                            <radio checked="{{is_self}}" style="float:left;" value="自助注册"></radio>
+                            <view style="float:left;font-weight:500;font-family:SourceHanSansCN-Medium;font-size:28rpx">
+                                <text>自助注册
+Self registration</text>
+                            </view>
+                            <view style="float:left;margin-left:50rpx;">|</view>
+                        </label>
+                        <label class="radio">
+                            <radio style="float:left;" value="代注册"></radio>
+                            <view style="float:left;font-weight:500;font-family:SourceHanSansCN-Medium;font-size:28rpx">
+                                <text>代注册
+Substitute registration</text>
+                            </view>
+                            <view style="float:left;"></view>
+                            <view>
+</view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="page-section" style="padding-left:20rpx" wx:if="{{index==0}}">
+                    <radio-group bindchange="radio_change" class="radio-group" style="margin-top:40rpx;">
+                        <label class="radio">
+                            <radio checked="{{checked_flash}}" style="float:left;" value="微警认证"></radio>
+                            <view style="float:left;font-weight:500;font-family:SourceHanSansCN-Medium;font-size:28rpx">
+                                <text>微警认证
+Weijing identify</text>
+                            </view>
+                            <view style="float:left;margin-left:50rpx;"></view>
+                            <view style="float:left;"></view>
+                            <view>
+</view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view style="border-radius:20px;background:white">
+                    <view class="page-section">
+                        <view class="weui-cells__title" style="padding-top:30rpx">意见反馈 Feedback</view>
+                        <view class="weui-cell weui-cell_input">
+                            <input bindblur="bindblur_remark" bindinput="bindinput_remark" class="weui-input" placeholder="使用过程遇到问题?" placeholderStyle="font-size:28rpx;" style="border-bottom:1px solid #f6f6f6;width:100%;font-family:SourceHanSansCN-Medium;" value="{{remark}}"></input>
+                        </view>
+                    </view>
+                </view>
+                <view style="border-radius:20px;background:white;margin-top:40rpx;">
+                    <view class="page-section">
+                        <view class="weui-cell weui-cell_input">
+                            <radio bindtap="checkboxChange_user_agreement" checked="{{user_agreement_checked}}" style="float:left;"></radio>
+                            <view>
+                                <text style="color:#999999;font-family:SourceHanSansCN-Medium;font-size:28rpx;">我同意平安码丨平安白云使用我所提交的信息用于实名认证。查看</text>
+                                <text bindtap="read_user_service_agreement" style="color:#3399FF;font-family:SourceHanSansCN-Medium;font-size:28rpx;">《用户服务协议》</text>
+                                <text style="color:#999999;font-family:SourceHanSansCN-Medium;font-size:28rpx;">与</text>
+                                <text bindtap="read_user_information_protection_protocol" style="color:#3399FF;font-family:SourceHanSansCN-Medium;font-size:28rpx;">《个人信息保护政策》</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="btn-area">
+                    <button bindtap="before_upload_id_card_info" type="primary">提交 Submit</button>
+                </view>
+            </form>
+        </view>
+    </view>
+</view>
+<mp-dialog>
+    <view class="avatar-nickname-box" wx:if="{{avatar_nickname_box_type}}">
+        <view class="avatar-nickname-main">
+            <view class="avatar_contentr" style="padding-top:30rpx;">
+                <view style="width:25%;">头像</view>
+                <button bind:chooseavatar="onChooseAvatar" class="avatar-wrapper" openType="chooseAvatar" style="width:70%;">
+                    <view class="color_tx_1">请点击获取头像</view>
+                    <image class="avatar" src="{{avatarUrl}}"></image>
+                </button>
+            </view>
+            <view class="avatar_contentr">
+                <view style="width:25%;">昵称</view>
+                <mp-form style="width:77%;">
+                    <mp-cells>
+                        <mp-cell title="昵称">
+                            <input bindblur="bindblur_nickname" bindinput="nicknameInput" class="nickname-input" placeholder="请点击输入昵称" type="nickname"></input>
+                        </mp-cell>
+                    </mp-cells>
+                </mp-form>
+            </view>
+            <button bindtap="confirm_avatar_nickname" class="confirm_avatar_nickname">下一步 Next Step</button>
+        </view>
+    </view>
+</mp-dialog>
+<van-popup bind:close="onClose" customStyle="height: 50%" position="bottom" show="{{show_choose_country}}">
+    <van-search bind:change="SearchCountry" placeholder="请输入搜索关键词"></van-search>
+    <van-picker showToolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{searchCountry}}"></van-picker>
+</van-popup>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showPasswordModal}}"></view>
+<view class="modal-dialog" style="height:460rpx;" wx:if="{{showPasswordModal}}">
+    <view class="text-pass-title">请输入密码</view>
+    <view class="text-pass-en">Please input a password</view>
+    <view class="pass-input-v">
+        <input bindinput="bindinput_password" class="pass-input" placeholder="请输入密码" type="password" value="{{password}}"></input>
+    </view>
+    <view decode="true">
+        <button bindtap="submit_password" class="button_role_confirm" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">提交 Submit</button>
+    </view>
+    <view decode="true">
+        <button bindtap="cancel_password" class="button_role_cancel" plain="true" style="display;background-color:white;color:black;border-color:rgb(222,222,222);">取消 Cancel</button>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_camera}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_camera}}">
+    <view>
+        <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindtap="get_camera_role" class="button_role_confirm" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">申请获取摄像头权限</button>
+    </view>
+    <view>
+        <button bindtap="permission_deny" class="button_role_cancel" plain="true" style="display;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_camera_refuse}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_camera_refuse}}">
+    <view>
+        <image mode="widthFix" src="https://qv1.pinganbaiyun.cn/img/role_header.png" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindopensetting="get_camera_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">申请获取摄像头权限</button>
+    </view>
+    <view>
+        <button bindtap="permission_deny" class="button_role_cancel" plain="true" style="display;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<mp-halfScreenDialog bindbuttontap="get_user_info_result" buttons="{{buttons_user_info}}" maskClosable="{{false}}" show="{{show_ask_user_info}}" subTitle="" tips="">
+    <view slot="title" style="text-align:center;">请进行用户信息授权</view>
+    <view slot="desc" style="height:300rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+        </view>
+    </view>
+</mp-halfScreenDialog>
+<view class="select__street" hoverClass="none" hoverStopPropagation="false" style="background-color:#fff;" wx:if="{{select_street_type}}">
+    <view class="page__hd flex">
+        <view class="page__desc">请选择所在地区</view>
+    </view>
+    <view class="page__hd2 flex">
+        <view bindtap="recheck" class="page__desc">广东省</view>
+        <view bindtap="recheck" class="page__desc">广州市</view>
+        <view bindtap="recheck" class="page__desc">{{showQu}}</view>
+        <view bindtap="recheck" class="page__desc2">{{showStreet}}</view>
+        <view bindtap="recheck" class="page__desc">重新选择</view>
+    </view>
+    <scroll-view bindscroll="scroll" class="scroll-view_H" scrollY="true" style="height:740rpx">
+        <mp-index-list bindchoose="onChoose3" class="city__list" list="{{list3}}" wx:if="{{showQuList}}">
+            <view class="page_box">
+                <view class="page__bd" style="background-color:#fff;"></view>
+            </view>
+        </mp-index-list>
+        <mp-index-list bindchoose="onChoose" class="city__list" list="{{list}}" wx:if="{{showStreetList}}">
+            <view class="page_box">
+                <view class="page__bd" style="background-color:#fff;"></view>
+            </view>
+        </mp-index-list>
+        <mp-index-list bindchoose="onChoose2" class="city__list" list="{{list2}}" wx:if="{{showCommunityList}}">
+            <view class="page_box">
+                <view class="page__bd" style="background-color:#fff;"></view>
+            </view>
+        </mp-index-list>
+    </scroll-view>
+</view>
+<view class="mb" hoverClass="none" hoverStopPropagation="false" wx:if="{{select_street_type}}"></view>
+<template is="foot" data></template>

@@ -1,0 +1,70 @@
+@import "../../../common/lib/weui.wxss";
+
+.controls {
+    display: -webkit-flex;
+    display: flex;
+    height: 50px;
+    position: relative;
+    top: 0
+}
+
+.pause,.play,.time {
+    -webkit-flex: 1;
+    flex: 1;
+    height: 100%
+}
+
+.time {
+    background-color: rgba(0,0,0,.5);
+    color: red;
+    line-height: 50px;
+    text-align: center
+}
+
+.img {
+    height: 40px;
+    margin: 5px auto;
+    width: 40px
+}
+
+.controls_02 {
+    display: -webkit-flex;
+    display: flex;
+    height: 50px;
+    position: relative;
+    top: 50px
+}
+
+.box {
+    float: left;
+    top: 85%;
+    width: 33.3%
+}
+
+.album {
+    height: 88rpx;
+    padding-bottom: 20rpx;
+    padding-top: 24rpx;
+    width: 96rpx
+}
+
+.album,.takephoto {
+    float: left;
+    margin: 5px auto;
+    padding-left: 60rpx
+}
+
+.takephoto {
+    height: 160rpx;
+    width: 160rpx
+}
+
+.switch {
+    float: right;
+    height: 76rpx;
+    margin: 5px auto;
+    padding-bottom: 34rpx;
+    padding-right: 40rpx;
+    padding-top: 24rpx;
+    width: 96rpx
+}

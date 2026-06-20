@@ -1,0 +1,19 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <camera binderror="error" devicePosition="front" flash="auto" style="width:100%;height:{{camera_height}}px;">
+        <cover-view style="height:10px;text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative;"></cover-view>
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative;">请勿使用摄像头拍摄手机相册,手机视频,纸质相片,</cover-view>
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative">身份证照,证件照等非活体相片,</cover-view>
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative">审核不通过将禁止使用</cover-view>
+        <cover-view style="height:10px;text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:{{camera_height_inner_01}}px;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="float:left;width:80%;height:{{camera_height_inner_01}}px;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:{{camera_height_inner_01}}px;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="top:{{camera_height_inner_02}}px;height:{{camera_height_inner_04}}px;width:100%;text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:bottom;"></cover-view>
+        <cover-view style="top:{{camera_height_inner_03}}px;width:100%;text-align:center;background-color:rgba(0, 0, 0, .0);color:red;line-height:20px;position:fixed;">
+            <cover-image bindtap="take_photo" src="../../../../image/capture.png" style="display:{{show_button}};width:86px;height:86px;margin:5px auto;"></cover-image>
+        </cover-view>
+    </camera>
+    <canvas canvasId="id_canvas_img" hidden="true" style="width:100px;height:200px;top:0px;position:fixed;z-index:-11;"></canvas>
+</view>

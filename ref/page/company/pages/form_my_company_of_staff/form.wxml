@@ -1,0 +1,173 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="official">
+    <official-account officialAccount binderror="_handleOfficialAccountError" bindload="_handleOfficialAccountError"></official-account>
+</view>
+<view class="container">
+    <template is="head" data="{{title:title}}"></template>
+    <view class="page-body">
+        <form catchreset="formReset" catchsubmit="formSubmit">
+            <view class="page-section">
+                <view class="weui-cells__title">单位名称</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{GSMC}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">地址</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{DZ}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">加入状态</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{ZT}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-area" hidden="{{bt_apply_display}}">
+                <button bindtap="submit_apply" type="primary">加入单位</button>
+            </view>
+            <view class="btn-area" hidden="{{bt_index_display}}">
+                <button bindtap="go_index" type="default">返回首页</button>
+            </view>
+        </form>
+    </view>
+    <view bindtap="hideModal_user_info" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_user_info}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_user_info}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">请授权平安码丨平安白云获取微信用户信息</view>
+        </view>
+        <view class="modal-footer">
+            <button bindgetuserinfo="get_user_info_result" class="modal_button" openType="getUserInfo" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_location}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">拒绝授权可能会影响平安码丨平安白云部分功能使用 请授权</view>
+        </view>
+        <view class="modal-footer">
+            <button bindopensetting="get_role_result" class="modal_button" openType="openSetting" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_address" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_address}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_address}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">请选择您需要加入的部门</view>
+        <view class="modal-title_01">
+            <picker bindchange="bindPickerChange2" range="{{department}}" value="{{department[departmentIndex]}}">
+                <view class="weui-cells__title"></view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input disabled class="weui-input" name="input" value="{{department[departmentIndex]}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="modal-title_01">请完善您的居住地址信息</view>
+        <view class="modal-title_01">
+            <view class="page-section">
+                <view class="weui-cells__title"></view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input bindtap="show_picker" class="weui-input" disabled="true" name="input" placeholder="请选择所在市、区" value="{{live_address1}}"></input>
+                            <van-popup round bind:close="hide_picker" show="{{show}}" position="bottom">
+                                <multi-picker active="{{show_level}}" bindclose="hide_picker" bindfinshed="get_return" prop_value="{{prop_value}}" wx:if="{{creat_picker}}"></multi-picker>
+                            </van-popup>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="modal-title_01">
+            <view class="page-section">
+                <view class="weui-cells__title"></view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input bindinput="live_address_input" bindtap="show_picker2" class="weui-input" value="{{live_address}}" name="input" placeholder="请录入详细居住地址" style="font-size:30rpx;" wx:if="{{live_area!='白云区'}}"></input>
+                            <view bindtap="show_picker2" class="weui-input" style="font-size:28rpx;" wx:if="{{live_area=='白云区'&&live_address!=''}}">{{live_address}}</view>
+                            <view bindtap="show_picker2" class="weui-input" style="font-size:28rpx;color:gray;" wx:if="{{live_area=='白云区'&&live_address==''}}">请录入详细居住地址</view>
+                            <van-popup round bind:close="hide_picker" customStyle="height: 85%;" show="{{show2}}" position="bottom">
+                                <view style="padding:15rpx;margin-top:10rpx;">
+                                    <view style="border-bottom:2rpx solid rgb(238,238,238);padding-bottom:20rpx;">请选择详细居住地址</view>
+                                    <input class="weui-input" value="{{live_address_search}}" name="input" placeholder="请输入具体门牌号搜索" style="border-bottom:2rpx solid rgb(238,238,238);"></input>
+                                    <button bindtap="live_address_search_click" class="modal_button" style="height:60rpx;line-height:60rpx;font-size:30rpx;margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">搜索</button>
+                                    <view bindtap="no_stand_address" style="color:#1C90FF;margin:10rpx 0;">没有标准地址?请点击后手动输入</view>
+                                    <view bindtap="get_live_address_select" data-item="{{item}}" style="height:80rpx;line-height:80rpx;border-bottom:2rpx solid rgb(238,238,238);" wx:if="{{!no_standAddress}}" wx:for="{{live_address_list}}" wx:key="index">{{item.MPDZMC||item.DZMC}}</view>
+                                    <view bindtap="get_next_page" style="margin-bottom:30rpx;color:#1C90FF;border-radius:35rpx;border:3rpx solid #1C90FF;;margin-left:42rpx;margin-right:42rpx;margin-top:20rpx;height:70rpx;line-height:70rpx;text-align:center;" wx:if="{{!no_standAddress}}">{{page_info}}</view>
+                                    <button bindtap="no_stand_address_click" class="modal_button" style="height:60rpx;line-height:60rpx;font-size:30rpx;margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary" wx:if="{{no_standAddress}}">确定</button>
+                                </view>
+                            </van-popup>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{showModal_permanent_address==true}}">
+            <view class="modal-title_01">请完善您的户籍地址信息</view>
+            <view class="modal-title_01">
+                <picker bindchange="bind_permanent_region_change" class="permanent_address" mode="region" value="{{permanent_region}}">
+                    <view class="picker">选择户籍地：{{permanent_region[0]}}{{permanent_region[1]}}{{permanent_region[2]}}</view>
+                </picker>
+            </view>
+            <view class="modal-title_01">
+                <view class="page-section">
+                    <view class="weui-cells__title"></view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input bindinput="bindinput_permanent_detail_address" class="weui-input" name="input" placeholder="请录入户籍详细地址" value="{{permanent_detail_address}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="modal-title_01">
+            <view class="page-section">
+                <view class="weui-cells__title"></view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__bd">
+                            <input bindblur="bindblur_bz" bindinput="bindinput_bz" class="weui-input" name="input" placeholder="{{remark_place_holder}}" value="{{bz}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="modal-content">
+            <view class="modal-input"></view>
+        </view>
+        <view class="modal-footer">
+            <button bindtap="input_address_then_join_company" class="modal_button" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">确定</button>
+        </view>
+    </view>
+    <template is="foot" data></template>
+</view>

@@ -1,0 +1,23 @@
+<view class="page">
+    <view class="container">
+        <view class="box">
+            <image src="{{bg_img}}" style="width:100%;height:100%;position:fixed;"></image>
+            <mp-halfScreenDialog bindcustomevent_get_mobile="get_mobile_phone" buttons="{{buttons_get_info}}" maskClosable="{{false}}" show="{{show_ask_get_info}}" subTitle="" tips="">
+                <view slot="title" style="text-align:center;">您未进行登录授权，请先登录授权</view>
+                <view slot="desc" style="height:300rpx;">
+                    <view style="text-align:center;">
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+                    </view>
+                </view>
+            </mp-halfScreenDialog>
+            <mp-halfScreenDialog bindcustomevent_get_user_info="get_user_info" buttons="{{buttons_user_info}}" maskClosable="{{false}}" show="{{show_ask_user_info}}" subTitle="" tips="">
+                <view slot="title" style="text-align:center;">请进行用户信息授权</view>
+                <view slot="desc" style="height:300rpx;">
+                    <view style="text-align:center;">
+                        <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+                    </view>
+                </view>
+            </mp-halfScreenDialog>
+        </view>
+    </view>
+</view>

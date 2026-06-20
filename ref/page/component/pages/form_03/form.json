@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "平安码丨平安白云",
+  "usingComponents": {
+    "mp-halfScreenDialog": "page/weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "mp-fallery": "page/weui-miniprogram/fallery/gallery",
+    "mp-gallery": "page/weui-miniprogram/gallery/gallery"
+  }
+}

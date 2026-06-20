@@ -1,0 +1,86 @@
+.controls {
+    display: -webkit-flex;
+    display: flex;
+    height: 50px;
+    margin-top: -25px;
+    position: relative;
+    top: 50%
+}
+
+.pause,.play,.time {
+    -webkit-flex: 1;
+    flex: 1;
+    height: 100%
+}
+
+.time {
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    line-height: 50px;
+    text-align: center
+}
+
+.img {
+    height: 50px;
+    margin: 5px auto;
+    width: 50px
+}
+
+.cameracenter-view {
+    color: #fff;
+    font-family: PingFangSC-Medium;
+    font-size: 32rpx;
+    height: 40%;
+    letter-spacing: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%
+}
+
+.change {
+    right: 60rpx
+}
+
+.change,.choose {
+    color: #fff;
+    position: absolute;
+    top: 118rpx
+}
+
+.choose {
+    left: 74rpx
+}
+
+.box {
+    float: left;
+    top: 85%;
+    width: 33.3%
+}
+
+.album {
+    height: 88rpx;
+    padding-bottom: 20rpx;
+    padding-top: 24rpx;
+    width: 96rpx
+}
+
+.album,.takephoto {
+    float: left;
+    margin: 5px auto;
+    padding-left: 60rpx
+}
+
+.takephoto {
+    height: 160rpx;
+    width: 160rpx
+}
+
+.switch {
+    float: right;
+    height: 76rpx;
+    margin: 5px auto;
+    padding-bottom: 34rpx;
+    padding-right: 40rpx;
+    padding-top: 24rpx;
+    width: 96rpx
+}

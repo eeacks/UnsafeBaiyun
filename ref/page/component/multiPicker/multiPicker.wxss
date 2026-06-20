@@ -1,0 +1,45 @@
+.flyingd-dialog {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+    left: 50%;
+    margin: 0 auto;
+    max-width: 700px;
+    min-width: 320px;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    z-index: 99
+}
+
+.picker_contain {
+    background-color: #fff;
+    border-radius: 10rpx 10rpx 0 0;
+    height: 70vh;
+    overflow: hidden;
+    width: 100%
+}
+
+.item_contain {
+    height: 60vh;
+    margin-top: 15rpx;
+    overflow: auto
+}
+
+.item_contain .item {
+    border-bottom: 1px solid #eee;
+    font-size: 40rpx;
+    padding: 20rpx 40rpx;
+    text-align: start
+}
+
+.right_line {
+    border-left: 2px solid #eee
+}

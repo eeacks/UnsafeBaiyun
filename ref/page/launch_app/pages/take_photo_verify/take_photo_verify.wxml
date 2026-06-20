@@ -1,0 +1,24 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <template is="head" data="{{title:'拍照核验'}}"></template>
+    <view class="page-body">
+        <form catchreset="formReset" catchsubmit="formSubmit">
+            <view class="page-section">
+                <view class="weui-cells__title">自动识别超时，请您拍摄本人正面照片进行核验</view>
+            </view>
+            <view class="page-section"></view>
+            <view class="btn-area">
+                <button bindtap="takePhoto" type="primary">拍照核验</button>
+                <button bindtap="go_index" type="default">返回首页</button>
+            </view>
+            <view class="page-section">
+                <view class="weui-cells__title">预览</view>
+                <view class="weui-cells__title">
+                    <image mode="widthFix" src="{{src}}" style="margin:auto;width:200px;height:200px;"></image>
+                </view>
+            </view>
+        </form>
+    </view>
+    <template is="foot" data></template>
+</view>

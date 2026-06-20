@@ -1,0 +1,116 @@
+.wx-flex {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex
+}
+
+.wx-flex__item {
+    -webkit-flex: 1;
+    flex: 1
+}
+
+.thin-border-bottom {
+    position: relative
+}
+
+.thin-border-bottom:after {
+    border-bottom: 1px solid #eaeaea;
+    bottom: 0;
+    color: #e5e5e5;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    z-index: 2
+}
+
+.index-group__title {
+    padding: 24rpx 24rpx 12rpx
+}
+
+.index-group__content {
+    font-size: 0
+}
+
+.index-group__item {
+    font-size: 30rpx;
+    padding: 30rpx 24rpx
+}
+
+.index-group__item.thin-border-bottom:after {
+    left: 24rpx
+}
+
+.anchor-bar__wrp {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 60rpx;
+    z-index: 999
+}
+
+.anchor-item {
+    font-size: 0;
+    position: relative;
+    text-align: center
+}
+
+.anchor-item__inner {
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 20rpx;
+    font-weight: 500;
+    height: 28rpx;
+    line-height: 28rpx;
+    margin: 2rpx 0;
+    width: 28rpx
+}
+
+.tapped .anchor-item__pop {
+    display: block
+}
+
+.anchor-item__pop {
+    background-color: #c9c9c9;
+    border-radius: 50%;
+    color: #fff;
+    display: none;
+    font-size: 64rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    right: 80rpx;
+    width: 100rpx
+}
+
+.anchor-item__pop,.anchor-item__pop:after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.anchor-item__pop:after {
+    border: 40rpx solid transparent;
+    border-left-color: #c9c9c9;
+    content: "";
+    display: block;
+    height: 0;
+    left: 80rpx;
+    width: 0
+}
+
+.anchor-item.selected .anchor-item__inner {
+    background-color: #1c90ff;
+    color: #fff
+}
+
+.index-group__item {
+    font-size: 40rpx
+}

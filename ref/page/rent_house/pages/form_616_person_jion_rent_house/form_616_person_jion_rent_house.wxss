@@ -1,0 +1,27 @@
+@import "../../../common/lib/weui.wxss";
+
+.index-hd {
+    padding: 80rpx;
+    text-align: center
+}
+
+.index-logo {
+    height: 86rpx;
+    width: 86rpx
+}
+
+.index-desc {
+    color: #888;
+    font-size: 28rpx;
+    margin-top: 20rpx
+}
+
+.input {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 28rpx;
+    height: 82rpx;
+    line-height: 28rpx;
+    padding: 0 20rpx;
+    width: 100%
+}

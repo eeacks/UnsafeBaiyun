@@ -2,7 +2,7 @@ package cn.huacheng.safebaiyun.compose
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -30,21 +30,42 @@ import cn.huacheng.safebaiyun.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopBar(onEditClick: () -> Unit, onHelperClick: () -> Unit) {
+fun MainTopBar(
+    onImportScanClick: () -> Unit,
+    onImportClipboardClick: () -> Unit,
+    onHelperClick: () -> Unit,
+    onLogClick: () -> Unit
+) {
 
     val showMenu = remember {
+        mutableStateOf(false)
+    }
+    val showAddMenu = remember {
         mutableStateOf(false)
     }
     TopAppBar(colors = TopAppBarDefaults.topAppBarColors(
         containerColor = MaterialTheme.colorScheme.primary,
         titleContentColor = MaterialTheme.colorScheme.onPrimary
     ), title = { Text(text = stringResource(id = R.string.app_name)) }, actions = {
-        IconButton(onClick = onEditClick) {
+        IconButton(onClick = { showAddMenu.value = true }) {
             Icon(
-                imageVector = Icons.Default.Edit,
+                imageVector = Icons.Default.Add,
                 contentDescription = "",
                 tint = MaterialTheme.colorScheme.onPrimary
             )
+        }
+        DropdownMenu(
+            expanded = showAddMenu.value,
+            onDismissRequest = { showAddMenu.value = false }
+        ) {
+            DropdownMenuItem(text = { Text(text = "扫码导入") }, onClick = {
+                showAddMenu.value = false
+                onImportScanClick()
+            })
+            DropdownMenuItem(text = { Text(text = "读取剪切板") }, onClick = {
+                showAddMenu.value = false
+                onImportClipboardClick()
+            })
         }
         IconButton(onClick = { showMenu.value = true }) {
             Icon(
@@ -57,6 +78,10 @@ fun MainTopBar(onEditClick: () -> Unit, onHelperClick: () -> Unit) {
         DropdownMenu(
             expanded = showMenu.value,
             onDismissRequest = { showMenu.value = false }) {
+            DropdownMenuItem(text = { Text(text = "运行日志") }, onClick = {
+                showMenu.value = false
+                onLogClick.invoke()
+            })
             DropdownMenuItem(text = { Text(text = "使用说明") }, onClick = {
                 showMenu.value = false
                 onHelperClick.invoke()
@@ -68,7 +93,7 @@ fun MainTopBar(onEditClick: () -> Unit, onHelperClick: () -> Unit) {
 @Preview
 @Composable
 private fun MainTopBarPreview() {
-    MainTopBar({}, {})
+    MainTopBar({}, {}, {}, {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,6 +105,26 @@ fun HelperTopBar(navController: NavController) {
     ),
         title = {
             Text(text = "使用说明")
+        }, navigationIcon = {
+            IconButton(onClick = { navController.popBackStack() }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimary
+                )
+            }
+        })
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LogTopBar(navController: NavController) {
+    TopAppBar(colors = TopAppBarDefaults.topAppBarColors(
+        containerColor = MaterialTheme.colorScheme.primary,
+        titleContentColor = MaterialTheme.colorScheme.onPrimary
+    ),
+        title = {
+            Text(text = "运行日志")
         }, navigationIcon = {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(

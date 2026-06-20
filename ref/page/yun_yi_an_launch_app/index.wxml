@@ -1,0 +1,75 @@
+<view class="container">
+    <view class="index-hd">
+        <image class="index-logo" src="https://qv1.pinganbaiyun.cn/img/icon_04.png"></image>
+        <view class="index-desc">欢迎使用平安码丨平安白云</view>
+    </view>
+    <button appParameter="wechat" binderror="launchAppError" openType="launchApp"></button>
+    <view bindtap="hideModal_user_info" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_user_info}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_user_info}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">请授权平安码丨平安白云获取微信用户信息</view>
+        </view>
+        <view class="modal-footer">
+            <button bindgetuserinfo="get_user_info_result" class="modal_button" openType="getUserInfo" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_location}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">拒绝授权影响身份核验 请授权</view>
+        </view>
+        <view class="modal-footer">
+            <button bindopensetting="get_role_result" class="modal_button" openType="openSetting" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_launch" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_launch}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_launch}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">{{modal_content}}</view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <navigator appId="wxb09865955963c59d" extraData="" openType="navigate" path="pages/login/login" style="margin-left:45rpx;text-align:center;width:80%;line-height:100rpx;height:100rpx;background-color:#4a8eff;height:90rpx;color:white;font-size:36rpx;" target="miniProgram" version="release">
+                    <br></br>返回云易安<br></br>
+                </navigator>
+                <br></br>
+            </view>
+        </view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <br></br>
+                <button bindtap="go_index" class="modal_button" style="margin-top:-10rpx;margin-buttom:30rpx;width:80%;" type="normal">返回首页</button>
+            </view>
+        </view>
+    </view>
+    <view bindtap="hideModal_lf_launch" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_lf_launch}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_lf_launch}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">{{modal_content}}</view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <navigator appId="wx09105b46430a941a" extraData="" openType="navigate" path="page/index/index" style="margin-left:45rpx;text-align:center;width:80%;line-height:100rpx;height:100rpx;background-color:#4a8eff;height:90rpx;color:white;font-size:36rpx;" target="miniProgram" version="release">
+                    <br></br>返回我的来访<br></br>
+                </navigator>
+                <br></br>
+            </view>
+        </view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <br></br>
+                <button bindtap="go_index" class="modal_button" style="margin-top:-10rpx;margin-buttom:30rpx;width:80%;" type="normal">返回首页</button>
+            </view>
+        </view>
+    </view>
+</view>

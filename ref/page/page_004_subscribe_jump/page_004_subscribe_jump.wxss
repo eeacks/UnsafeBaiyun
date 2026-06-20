@@ -1,0 +1,148 @@
+.box {
+    height: 1207rpx
+}
+
+.bg,.box {
+    width: 100%
+}
+
+.bg {
+    height: 100%
+}
+
+.btn {
+    height: 128rpx;
+    left: 195rpx;
+    position: absolute;
+    top: 755rpx;
+    width: 338rpx;
+    z-index: 2
+}
+
+.show-btn {
+    color: #2c2;
+    margin-top: 100rpx
+}
+
+.modal-mask {
+    background: #7f7f7f;
+    color: #fff;
+    height: 100%;
+    opacity: .5;
+    top: 0;
+    width: 100%;
+    z-index: 9000
+}
+
+.modal-dialog,.modal-mask {
+    left: 0;
+    overflow: hidden;
+    position: fixed
+}
+
+.modal-dialog {
+    background: #fff;
+    border-radius: 25rpx;
+    height: 513rpx;
+    margin-left: 58rpx;
+    top: 30%;
+    width: 635rpx;
+    z-index: 9999
+}
+
+.modal-title {
+    padding-top: 50rpx
+}
+
+.modal-title,.modal-title_01 {
+    color: #030303;
+    font-size: 36rpx;
+    text-align: center
+}
+
+.modal-title_01 {
+    padding: 0rpx 32rpx 5rpx
+}
+
+.modal-content {
+    padding: 0rpx 50rpx 30rpx
+}
+
+.modal-input {
+    display: -webkit-flex;
+    display: flex
+}
+
+.input {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 28rpx;
+    height: 82rpx;
+    line-height: 28rpx;
+    padding: 0 20rpx;
+    width: 100%
+}
+
+wx-input-holder {
+    color: #666;
+    font-size: 28rpx
+}
+
+.modal-footer {
+    border-top: 1px solid #dedede;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    font-size: 34rpx
+}
+
+.btn-cancel {
+    border-right: 1px solid #dedede;
+    color: #666
+}
+
+.btn-cancel,.btn-confirm {
+    text-align: center;
+    width: 50%
+}
+
+.btn-confirm {
+    color: #ec5300
+}
+
+.modal_button {
+    margin-bottom: 40rpx;
+    margin-top: 40rpx
+}
+
+.ad_cover {
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    position: absolute;
+    top: 0rpx;
+    width: 100%
+}
+
+.ad_cover_img {
+    z-index: 10
+}
+
+.button_role_confirm {
+    background: linear-gradient(270deg,#006eff,#0af);
+    border-color: #0089ff;
+    border-radius: 35rpx;
+    margin-top: 45rpx
+}
+
+.button_role_cancel,.button_role_confirm {
+    height: 73rpx;
+    line-height: 73rpx;
+    width: 380rpx
+}
+
+.button_role_cancel {
+    background-color: #fff;
+    border-radius: 35rpx;
+    margin-top: 24rpx
+}

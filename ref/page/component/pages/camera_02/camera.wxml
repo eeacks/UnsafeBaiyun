@@ -1,0 +1,10 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <camera binderror="error" devicePosition="front" flash="auto" style="width:100%;height:{{camera_height}}px;">
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative;">请勿使用摄像头拍摄手机相册,手机视频,纸质相片,</cover-view>
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative">身份证照,证件照等非活体相片,</cover-view>
+        <cover-view style="text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20px;position:relative">审核不通过将禁止使用</cover-view>
+        <cover-view bindtap="takePhoto" style="margin-top:{{button_top}}px;margin-left:{{button_left}}px;width:150rpx;text-align:center;background-color:#F8F8F8;color:#000000;line-height:150rpx;position:relative;font-size:18px;border-radius:150rpx;">拍照</cover-view>
+    </camera>
+</view>

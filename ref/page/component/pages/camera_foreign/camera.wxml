@@ -1,0 +1,23 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <camera binderror="error" devicePosition="back" flash="auto" style="width:100%;height:{{camera_height}}px;">
+        <cover-view style="float:left;width:10%;height:90rpx;background-color:rgba(0, 0, 0, 0);position:relative;"></cover-view>
+        <cover-view style="float:left;margin-top:10%;width:80%;height:90rpx;background-color:rgba(255, 0, 0, 0);position:relative;text-align:center;color:red;font-size:72rpx;font-weight:700;z-index:1;">请确保人脸在框内</cover-view>
+        <cover-view style="float:left;width:10%;height:90rpx;background-color:rgba(0, 0, 0, 0);position:relative;"></cover-view>
+        <cover-view style="position:fixed;z-index:0;">
+            <cover-image src="https://qv1.pinganbaiyun.cn/img/img_009_register/face.png"></cover-image>
+        </cover-view>
+        <cover-view style="top:85%;width:100%;text-align:center;background-color:rgba(0, 0, 0, .0);position:fixed;">
+            <cover-view class="box">
+                <cover-image bindtap="chooseimage" class="album" src="https://qv1.pinganbaiyun.cn/img/img_009_register/album.png" style="display:{{show_button}};"></cover-image>
+            </cover-view>
+            <cover-view class="box">
+                <cover-image bindtap="takePhoto" src="https://qv1.pinganbaiyun.cn/img/img_009_register/capture1.png" style="display:{{show_button}};width:160rpx;height:160rpx;margin:5px auto;float:left;padding-left:60rpx;"></cover-image>
+            </cover-view>
+            <cover-view class="box">
+                <cover-image bindtap="changedevice" class="switch" src="https://qv1.pinganbaiyun.cn/img/img_009_register/change.png" style="display:{{show_button}};"></cover-image>
+            </cover-view>
+        </cover-view>
+    </camera>
+</view>

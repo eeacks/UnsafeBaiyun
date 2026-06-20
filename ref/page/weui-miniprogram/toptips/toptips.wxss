@@ -1,0 +1,43 @@
+.weui-toptips {
+    word-wrap: break-word;
+    background: rgba(250,81,81,.9);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: hsla(0,0%,100%,.9);
+    font-size: 17px;
+    left: 16px;
+    line-height: 1.4;
+    padding: 8px;
+    position: fixed;
+    right: 16px;
+    text-align: center;
+    top: 8px;
+    -webkit-transform: translateZ(0) translateY(calc(-100% - 8px));
+    transform: translateZ(0) translateY(calc(-100% - 8px));
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    word-break: break-all;
+    z-index: 5000
+}
+
+.weui-toptips_show {
+    opacity: 1;
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0)
+}
+
+.weui-toptips_warn {
+    background-color: #fa5151
+}
+
+.weui-toptips_success {
+    background-color: #09bb07
+}
+
+.weui-toptips_error {
+    background-color: #fa5151
+}
+
+.weui-toptips_info {
+    background-color: #10aeff
+}

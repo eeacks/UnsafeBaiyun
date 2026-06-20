@@ -56,13 +56,17 @@ class ShortcutActivity : ComponentActivity() {
     }
 
     private fun unlock() {
-        val hasPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
-        } else {
-            true
+        val hasPermission = when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            }
+            else -> checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         }
 
-        if (!hasPermission || DataRepo.readData().first.isEmpty()) {
+        val config = DataRepo.readData()
+        if (!hasPermission || config.bluetoothName.isEmpty() || config.productKey.isEmpty()) {
             showToast("请先初始化")
             startActivity(Intent(this,MainActivity::class.java))
             finish()

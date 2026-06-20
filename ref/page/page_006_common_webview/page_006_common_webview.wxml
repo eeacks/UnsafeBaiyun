@@ -1,0 +1,16 @@
+<view class="page" wx:if="{{!show_webview}}">
+    <view class="container">
+        <view class="box">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_004_index/welcome.png" style="width:100%;height:100%;position:fixed;"></image>
+        </view>
+    </view>
+</view>
+<web-view bindmessage="bindmessage" src="{{src}}" wx:if="{{show_webview}}"></web-view>
+<mp-halfScreenDialog bindbuttontap="buttontap_send_msg" buttons="{{buttons_send_msg}}" maskClosable="{{false}}" show="{{show_ask_send_msg}}" subTitle="" tips="">
+    <view slot="title">请您订阅穗安防诈消息</view>
+    <view slot="desc" style="height:300rpx;">
+        <view style="text-align:center;">
+            <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/check.svg" style="width:75px;height:75px;"></image>
+        </view>
+    </view>
+</mp-halfScreenDialog>

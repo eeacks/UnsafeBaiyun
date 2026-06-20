@@ -1,0 +1,260 @@
+<view class="pageContainer">
+    <image class="navBg" mode="widthFix" src="../page_001_welcome_to_baiyun/image/my_header_bg.jpg"></image>
+    <view class="column-align-center" style="height:180rpx;background:linear-gradient(to right, #D3E8FC, #B5DAF9);justify-content:flex-end;">
+        <text style="font-size:32rpx;">平安码丨平安白云</text>
+        <view style="height:30rpx;"></view>
+    </view>
+    <view class="block-3" style="margin-top:50rpx;">
+        <view class="box">
+            <view class="bd">
+                <view class="group" style="display:flex;flex-direction:row;">
+                    <view class="wrap">
+                        <image class="large-icon" src="{{avatar}}"></image>
+                        <image class="large-icon" src="{{installed_fanzha_img}}" style="margin-left:20rpx;" wx:if="{{national_anti_fraud=='YES'}}"></image>
+                    </view>
+                    <view style="display:flex;flex-direction:column;">
+                        <text class="yunxiaodun">{{nick_name}}</text>
+                        <button bindtap="get_user_info_result_login" style="display:flex;flex-direction:row;background-color:transparent;width:250rpx;text-align:left;" wx:if="{{sho_login_flag==0}}">
+                            <text class="please-login">{{login_tip}}</text>
+                            <image class="row" src="../../../../image/more.png"></image>
+                        </button>
+                        <button bindtap="go_id_card" style="display:flex;flex-direction:row;background-color:transparent;width:250rpx;" wx:if="{{sho_login_flag==1}}">
+                            <text class="please-login">{{login_tip}}</text>
+                            <image class="row" src="../../../../image/more.png"></image>
+                        </button>
+                    </view>
+                    <view class="list_phone_block">
+                        <image bindtap="go_call_phone" class="list_icon" src="../page_001_welcome_to_baiyun/image/联系我们.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="row-align-center" style="width:100%;justify-content:center;margin-top:15rpx;">
+                <view bind:tap="search_click" class="row-align-center" style="height:90rpx;background:white;width:95%;border-radius:45rpx;justify-content:space-between;color:#2970ED;">
+                    <view class="row-align-center" style="margin-left:40rpx;">
+                        <image class="search_image" mode="aspectFit" src="../page_001_welcome_to_baiyun/image/搜索.svg" style="width:30rpx;height:30rpx;"></image>
+                        <swiper autoplay circular vertical class="notices-text" interval="3000" style="margin-top:0;">
+                            <swiper-item class="notices-text-List" wx:for="{{notices}}" wx:key="index">
+                                <view class="content">{{item.title}}</view>
+                            </swiper-item>
+                        </swiper>
+                    </view>
+                    <text style="margin-right:40rpx;">搜索</text>
+                </view>
+            </view>
+            <view class="row-align-center" style="width:100%;margin-top:40rpx;justify-content:space-around;">
+                <view bind:tap="four_item_click" class="column-align-center" data-item="{{item}}" wx:for="{{go_list}}" wx:key="idx">
+                    <image mode="" src="{{item.icon}}" style="width:130rpx;height:130rpx;margin-bottom:10rpx;"></image>
+                    <text>{{item.title}}</text>
+                </view>
+            </view>
+            <view class="indexSwiper">
+                <swiper autoplay="true" circular="true" class="scontainer" indicatorDots="true" interval="3000" style="height:{{swiperH}};">
+                    <swiper-item class="vol-swiper-item" wx:for="{{imgList}}" wx:key="index">
+                        <view class="vol-card">
+                            <image bindtap="click_swiper" class="vol-picture" data-post_index="{{item.index}}" data-post_remark="{{item.remark}}" mode="aspectFill" src="{{item.img}}"></image>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </view>
+    <view style="background:{{item.background}};margin:40rpx 20rpx 20rpx 20rpx;border-radius:30rpx;" wx:for="{{module_list}}" wx:for-index="idx" wx:key="idx">
+        <view class="row-align" style="justify-content:space-between;">
+            <view style="text-align:center;font-size:45rpx;color:white;position:relative;">
+                <image mode="" src="{{item.title_bg}}" style="width:400rpx;height:90rpx;" wx:if="{{item.title_bg_type=='工作人员专栏'}}"></image>
+                <image mode="" src="{{item.title_bg}}" style="width:300rpx;height:90rpx;" wx:else></image>
+                <view style="position:absolute;left:0;right:0;top:0;bottom:0;text-align:center;">{{item.title}}</view>
+            </view>
+            <view bind:tap="shouqi_click" class="row-align-center" data-index="{{idx}}" style="font-size:36rpx;margin-right:10rpx;margin-top:-40rpx;">
+                <text style="color:#2970ED;margin-right:8rpx;">收起</text>
+                <image class="shouqi {{item.retract==false?'':'rotateBottom'}}" mode="" src="../page_001_welcome_to_baiyun/image/my_shouqi.svg"></image>
+            </view>
+        </view>
+        <view bind:tap="item_click" data-item="{{item2}}" style="padding:30rpx;background:white;border-radius:20rpx;margin:20rpx 10rpx 10rpx 10rpx;" wx:if="{{item.retract==false}}" wx:for="{{item.item_list}}" wx:for-index="idx2" wx:for-item="item2" wx:key="idx2">
+            <view class="row-align-center" style="font-size:38rpx;font-weight:bold;position:relative;">
+                <image mode="" src="{{item2.icon}}" style="height:35rpx;width:35rpx;margin-right:10rpx;"></image>
+                <text>{{item2.title}}</text>
+                <image mode="" src="../page_001_welcome_to_baiyun/image/下拉.svg" style="position:absolute;top:10rpx;right:10rpx;height:42rpx;width:42rpx;"></image>
+            </view>
+            <text style="color:#848484;font-size:32rpx;">{{item2.subtitle}}</text>
+            <view class="row-align-center" style="flex-wrap:wrap;margin-top:10rpx;font-size:32rpx;" wx:if="{{item2.title=='物流寄递'}}">
+                <view catch:tap="sub_item_click" data-big_item="{{item2.title}}" data-item="{{item3}}" style="margin:10rpx 0;padding-left:16rpx;padding-right:16rpx;height:70rpx;line-height:70rpx;text-align:center;background:#F7F7F7;color:#2970ED;border-radius:10rpx;padding-top:6rpx;padding-bottom:6rpx;" wx:if="{{item3=='在线寄件'}}" wx:for="{{item2.sub_item_list}}" wx:for-index="idx3" wx:for-item="item3" wx:key="idx3">{{item3}}</view>
+                <view catch:tap="sub_item_click" data-big_item="{{item2.title}}" data-item="{{item3}}" style="margin:10rpx 0;padding-left:16rpx;padding-right:16rpx;height:70rpx;line-height:70rpx;text-align:center;background:#F7F7F7;color:#2970ED;border-radius:10rpx;padding-top:6rpx;padding-bottom:6rpx;margin-left:12%;" wx:if="{{item3=='云递安采集'}}" wx:for="{{item2.sub_item_list}}" wx:for-index="idx3" wx:for-item="item3" wx:key="idx3">{{item3}}</view>
+            </view>
+            <view class="row-align-center" style="justify-content:space-between;flex-wrap:{{item2.title=='举报/求助'||item2.title=='企业服务'||item2.title=='智慧城管'?'wrap':'wrap'}};margin-top:10rpx;font-size:{{item2.title=='最小应急单元'?'30rpx':'32rpx'}};" wx:if="{{item2.title=='挂号就医'||item2.title=='白云租房'}}">
+                <view catch:tap="sub_item_click" data-big_item="{{item2.title}}" data-item="{{item3}}" style="margin-top:15rpx;padding-left:{{item2.title=='最小应急单元'?'10rpx':'16rpx'}};padding-right:{{item2.title=='最小应急单元'?'10rpx':'16rpx'}};width:160rpx;height:70rpx;line-height:70rpx;text-align:center;background:#F7F7F7;color:#2970ED;border-radius:10rpx;padding-top:6rpx;padding-bottom:6rpx;" wx:for="{{item2.sub_item_list}}" wx:for-index="idx3" wx:for-item="item3" wx:key="idx3">{{item3}}</view>
+            </view>
+            <view class="row-align-center" style="justify-content:space-between;flex-wrap:wrap;margin-top:10rpx;font-size:28rpx;" wx:if="{{item2.title=='供(排)水服务'}}">
+                <view catch:tap="sub_item_click" data-big_item="{{item2.title}}" data-item="{{item3}}" style="margin-top:15rpx;padding-left:16rpx;padding-right:16rpx;width:180rpx;height:70rpx;line-height:70rpx;text-align:center;background:#F7F7F7;color:#2970ED;border-radius:10rpx;padding-top:6rpx;padding-bottom:6rpx;" wx:for="{{item2.sub_item_list}}" wx:for-index="idx3" wx:for-item="item3" wx:key="idx3">{{item3}}</view>
+            </view>
+            <view class="row-align-center" style="justify-content:space-between;flex-wrap:{{item2.title=='举报/求助'||item2.title=='企业服务'||item2.title=='有困难，找网格员'||item2.title=='智慧城管'?'wrap':'wrap'}};margin-top:10rpx;font-size:{{item2.title=='最小应急单元'?'30rpx':item2.title=='警务服务'?'30rpx':'32rpx'}};" wx:if="{{item2.title!='物流寄递'&&item2.title!='挂号就医'&&item2.title!='白云租房'&&item2.title!='供(排)水服务'}}">
+                <view catch:tap="sub_item_click" data-big_item="{{item2.title}}" data-item="{{item3}}" style="margin-top:15rpx;padding-left:{{item2.title=='最小应急单元'?'10rpx':'16rpx'}};padding-right:{{item2.title=='最小应急单元'?'10rpx':'16rpx'}};width:{{item2.title=='企业服务'||item2.title=='有困难，找网格员'||item2.title=='智慧城管'||item2.title=='政务办事'&&item3!='白云区住所(经营场所)使用证明申请'?'270rpx':item3=='扫一扫'?'125rpx':item3=='故障上报'?'185rpx':item3=='邮政地图'?'185rpx':''}};height:70rpx;line-height:70rpx;text-align:center;background:#F7F7F7;color:#2970ED;border-radius:10rpx;padding-top:6rpx;padding-bottom:6rpx;margin-right:{{item3=='邮政地图'?'180rpx':''}};" wx:for="{{item2.sub_item_list}}" wx:for-index="idx3" wx:for-item="item3" wx:key="idx3">{{item3}}</view>
+            </view>
+        </view>
+        <view style="height:30rpx;"></view>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view class="kefu">
+        <image src="../page_001_welcome_to_baiyun/image/悬浮窗.png" style="width:140rpx;height:140rpx;pointer-events:none;"></image>
+        <button openType="feedback" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;padding:0;margin:0;"></button>
+    </view>
+    <view catchtouchmove="false" class="tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{select_query_type}}">
+        <image class="choose_identity_img" src="{{query_registered_residence}}"></image>
+        <view class="xuan_xinxi">
+            <view bindtap="radio_click1" class="flex huji_box1" data-text="人员查询">
+                <view class="flex1">人员查询</view>
+                <radio checked="{{radio_checked1}}" class="flex2" color="#1C90FF" value="人员查询"></radio>
+            </view>
+            <view bindtap="radio_click2" class="flex huji_box2" data-text="单位查询">
+                <view class="flex1">单位查询</view>
+                <radio checked="{{radio_checked2}}" class="flex2" color="#1C90FF" value="单位查询"></radio>
+            </view>
+        </view>
+        <button bindtap="next_one" class="next_one">下一步</button>
+    </view>
+    <view catchtouchmove="false" class="tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{show_border_cert_sel}}">
+        <image class="choose_identity_img" src="{{temporary_residence_permit}}"></image>
+        <view class="xuan_xinxi">
+            <view bindtap="border_radio_click1" class="flex huji_box1" data-text="白云区户籍人员">
+                <view class="flex1">白云区户籍人员</view>
+                <radio checked="{{border_radio_checked1}}" class="flex2" color="#1C90FF" value="白云区户籍人员"></radio>
+            </view>
+            <view bindtap="border_radio_click2" class="flex huji_box2" data-text="非白云区户籍人员" style="position:relative;">
+                <view class="flex1">非白云区户籍人员</view>
+                <radio checked="{{border_radio_checked2}}" class="flex2" color="#1C90FF" value="非白云区户籍人员"></radio>
+                <view style="position:absolute;top:73rpx;left:0;color:red;font-size:22rpx;">(持白云区居住证)</view>
+            </view>
+        </view>
+        <button bindtap="border_next_one" class="next_one" style="bottom:17rpx;">下一步</button>
+    </view>
+    <view bindtap="guabi_select_query" catchtouchmove="false" class="mb" hoverClass="none" hoverStopPropagation="false" wx:if="{{show_apply_person_type}}"></view>
+</view>
+<view style="height:25rpx;background-color:#fff;color:gainsboro;font-size:24rpx;text-align:center;">{{version_info}}</view>
+<view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_location}}">
+    <view>
+        <image class="list_icon" mode="widthFix" src="{{role_header}}" style="width:100%"></image>
+    </view>
+    <view>
+        <button bindopensetting="get_location_role_result" class="button_role_confirm" openType="openSetting" plain="true" style="margin-top:86rpx;background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">申请获取位置权限</button>
+    </view>
+    <view>
+        <button class="button_role_cancel" plain="true" style="display:none;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<view bindtap="hideModal_help" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_help}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_help}}">
+    <view>
+        <image class="list_icon" mode="widthFix" src="{{role_header}}" style="width:100%"></image>
+    </view>
+    <view>
+        <button class="button_role_confirm" openType="feedback" plain="true" style="margin-top:86rpx;background-color:#0089ff;color:white;border-color:#0089ff;" type="primary">意见反馈</button>
+    </view>
+    <view>
+        <button class="button_role_cancel" plain="true" style="display:none;background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<view bindtap="close_visitor_modal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{show_visitor_modal}}"></view>
+<view class="modal-dialog" wx:if="{{show_visitor_modal}}">
+    <view>
+        <image class="list_icon" mode="widthFix" src="{{role_header}}" style="width:100%"></image>
+    </view>
+    <view>
+        <navigator appId="wx09105b46430a941a" class="button_role_confirm" extraData="" openType="navigate" path="pages/index/index" plain="true" style="margin-left:45rpx;text-align:center;line-height:73rpx;height:73rpx;color:white;margin-left:126rpx;" target="miniProgram" version="release">我的来访(请点击跳转)</navigator>
+    </view>
+    <view>
+        <button bindtap="close_visitor_modal" class="button_role_cancel" plain="true" style="background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+    </view>
+</view>
+<view bindtap="hideModal_launch_yun_yi_an" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{show_duty_modal}}"></view>
+<view class="modal-dialog" wx:if="{{show_duty_modal}}">
+    <view class="modal-title">
+        <image class="list_icon" src="{{icon_04}}" style="width:86rpx;height:86rpx;"></image>
+    </view>
+    <view class="modal-title_01">您已将进入我的值班签到小程序</view>
+    <view class="modal-content">
+        <view class="modal-input">
+            <navigator appId="wxaac20f5ab4369974" bindcomplete="bindcomplete_miniProgram" bindfail="bindfail_miniProgram" bindsuccess="bindsuccess_miniProgram" extraData="" openType="navigate" path="page/index_01/pages/my/my" style="margin-left:45rpx;text-align:center;width:80%;line-height:100rpx;height:150rpx;background-color:#4a8eff;height:90rpx;color:white;font-size:36rpx;border-radius:10rpx;" target="miniProgram" version="release">
+                <br></br>值班签到<br></br>
+            </navigator>
+            <br></br>
+        </view>
+    </view>
+    <view class="modal-content">
+        <view class="modal-input">
+            <br></br>
+            <br></br>
+            <button bindtap="close_duty_modal" class="modal_button" style="margin-top:-20rpx;margin-buttom:30rpx;width:80%;" type="normal">取消</button>
+        </view>
+    </view>
+</view>
+<view class="ad_cover" style="height:{{ad_cover_height}}px;display:{{ad_cover_dispaly}};">
+    <image bindtap="tap_ad_cover" class="ad_cover_img" id="id_img_ad_cover" mode="aspectFit" src="{{ad_001}}" style="width:70%;height:100%;margin-left:15%;"></image>
+</view>
+<view style="position:fixed;top:{{close_ad_button_height}}px;display:{{close_ad_button_dispaly}};width:100%;">
+    <text style="color:white;display:flex;width:66%;margin-left:15%">{{count_down_str}}</text>
+    <image bindtap="hide_ad_cover" mode="widthFix" src="../page_001_welcome_to_baiyun/image/cancel.svg" style="width:60rpx;height:60rpx;z-index:11;display:flex;"></image>
+</view>
+<view class="ad_cover" style="height:100%;display:{{ad_cover_dispaly_big_img}};">
+    <image bindtap="hide_big_ad_cover" class="ad_cover_img" id="id_img_ad_cover" mode="aspectFit" src="{{ad_001}}" style="width:100%;height:100%;margin-left:0;"></image>
+</view>
+<view bindtap="hide_jiefen_code" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{show_jiefen_code}}"></view>
+<view class="jiefen-code-dialog" wx:if="{{show_jiefen_code}}">
+    <image bindlongpress="save_jiefen_code" class="jiefen-code-img" mode="widthFix" src="{{jiefen_code_url}}"></image>
+</view>
+<view style="margin-top:50rpx;position:fixed;top:0px;display:{{close_ad_button_dispaly_big_img}};width:100%;">
+    <image :src="{{cancel}}" bindtap="hide_big_ad_cover" mode="widthFix" style="width:60rpx;height:60rpx;z-index:11;margin-left:88%;"></image>
+</view>
+<view class="goods-detail-m" wx:if="{{isShowModel_yjm_res}}">
+    <view class="mask-m"></view>
+    <view class="goodsdetail-m">
+        <view style="text-align:center">
+            <image src="../page_001_welcome_to_baiyun/image/ask.svg" style="width:120rpx;height:120rpx;margin-top:20rpx"></image>
+        </view>
+        <view class="goodsdetail-m-title">您已入住登记成功?</view>
+        <view class="goodsdetail-m-body">
+            <button bindtap="check_in_again" class="goodsdetail-m-body-left">登记失败</button>
+            <button bindtap="go_subscribe" class="goodsdetail-m-body-right">登记成功</button>
+        </view>
+    </view>
+</view>
+<mp-dialog>
+    <view class="avatar-nickname-box" wx:if="{{avatar_nickname_box_type}}">
+        <view class="avatar-nickname-main">
+            <image bindtap="avatar_nickname_box_close" src="../page_001_welcome_to_baiyun/image/guanbi.png" style="position:absolute;right:60rpx;width:52rpx;height:52rpx;margin-top:10rpx;"></image>
+            <view class="avatar_contentr" style="padding-top:70rpx;">
+                <view style="width:25%;">头像</view>
+                <button bind:chooseavatar="onChooseAvatar" class="avatar-wrapper" openType="chooseAvatar" style="width:70%;">
+                    <view class="color_tx_1">请点击获取头像</view>
+                    <image class="avatar" src="{{avatarUrl}}"></image>
+                </button>
+            </view>
+            <view class="avatar_contentr">
+                <view style="width:25%;">昵称</view>
+                <mp-form style="width:77%;">
+                    <mp-cells>
+                        <mp-cell title="昵称">
+                            <input bindblur="bindblur_nickname" bindinput="nicknameInput" class="nickname-input" placeholder="请点击输入昵称" type="nickname"></input>
+                        </mp-cell>
+                    </mp-cells>
+                </mp-form>
+            </view>
+            <button bindtap="confirm_avatar_nickname" class="confirm_avatar_nickname">请登录</button>
+            <button bindtap="avatar_nickname_box_close" class="cancel_avatar_nickname">取消</button>
+        </view>
+    </view>
+</mp-dialog>
+<mp-halfScreenDialog bindbuttontap="buttontap_send_msg" buttons="{{buttons_send_msg}}" maskClosable="{{false}}" show="{{show_ask_send_msg}}" subTitle="" tips="">
+    <view slot="title">申请入住成功</view>
+    <view slot="desc" style="height:400rpx;">
+        <view style="text-align:center;">
+            <image src="../page_001_welcome_to_baiyun/image/check.svg" style="width:75px;height:75px;"></image>
+        </view>
+        <view style="margin-left:20px;margin-top:20px;">{{show_success_info}}</view>
+        <view style="margin-left:20px;margin-buttom:20px;">您是否允许平安码丨平安白云</view>
+        <view style="margin-left:20px;margin-buttom:20px;">为您发送申请结果消息?</view>
+    </view>
+</mp-halfScreenDialog>
+<view class="page">
+    <mp-fallery delete bindhide="hide_change_white_cloud_code" current="0" hideOnClick="{{true}}" imgUrls="{{img_white_cloud_code}}" show="{{show_white_cloud_code}}" showText="平安码"></mp-fallery>
+</view>

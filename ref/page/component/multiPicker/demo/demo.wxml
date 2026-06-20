@@ -1,0 +1,6 @@
+<view>
+    <van-field isLink readonly bindtap="show_picker" label="地区" placeholder="请选择所在地区" value="{{fieldValue}}"></van-field>
+    <van-popup round bind:close="hide_picker" show="{{show}}" position="bottom">
+        <multi-picker active="{{show_level}}" bindclose="hide_picker" bindfinshed="get_return" prop_value="{{prop_value}}" wx:if="{{creat_picker}}"></multi-picker>
+    </van-popup>
+</view>

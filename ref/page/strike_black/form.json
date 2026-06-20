@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-halfScreenDialog": "page/weui-miniprogram/half-screen-dialog2/half-screen-dialog"
+  }
+}

@@ -1,0 +1,38 @@
+<import src="../../../../common/head.wxml"></import>
+<import src="../../../../common/foot.wxml"></import>
+<view class="container">
+    <view class="index-hd">
+        <image class="index-logo" src="https://qv1.pinganbaiyun.cn/img/icon_04.png"></image>
+        <view class="index-desc">欢迎使用平安码丨平安白云</view>
+    </view>
+    <view class="btn-area" id="buttonContainer" style="position:absolute;top:300rpx;">
+        <button bindtap="go_index" hidden="{{hide_index}}" type="primary">返回首页</button>
+    </view>
+    <view bindtap="hideModal_user_info" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_user_info}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_user_info}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">请授权平安码丨平安白云获取微信用户信息</view>
+        </view>
+        <view class="modal-footer">
+            <button bindgetuserinfo="get_user_info_result" class="modal_button" openType="getUserInfo" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <view bindtap="hideModal_location" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_location}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal_location}}">
+        <view class="modal-title">
+            <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+        </view>
+        <view class="modal-title_01">申请获取权限</view>
+        <view class="modal-content">
+            <view class="modal-input">拒绝授权可能会影响平安码丨平安白云部分功能使用 请授权</view>
+        </view>
+        <view class="modal-footer">
+            <button bindopensetting="get_role_result" class="modal_button" openType="openSetting" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+        </view>
+    </view>
+    <template is="foot" data></template>
+</view>

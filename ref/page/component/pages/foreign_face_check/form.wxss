@@ -1,0 +1,103 @@
+.takephoto {
+    width: 100%
+}
+
+.takephoto .camera {
+    position: relative
+}
+
+.takephoto .camera,.takephoto wx-camera {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.takephoto wx-camera {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -99
+}
+
+.takephoto .goBack {
+    color: #1792f0;
+    font-size: 35rpx;
+    margin-left: 35rpx
+}
+
+.distinguishing wx-image {
+    height: 370rpx;
+    width: 100%
+}
+
+.progress_bg {
+    position: absolute
+}
+
+.takephoto .complete {
+    background: #fff;
+    border-top: 1rpx solid #e5e5e5;
+    bottom: 0;
+    color: #1792f0;
+    font-size: 40rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    position: fixed;
+    text-align: center;
+    width: 100%
+}
+
+.cameracenter-view {
+    color: #fff;
+    font-family: PingFangSC-Medium;
+    font-size: 60rpx;
+    font-weight: 700;
+    height: 40%;
+    letter-spacing: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%
+}
+
+.change {
+    right: 60rpx
+}
+
+.change,.choose {
+    color: #fff;
+    position: absolute;
+    top: 118rpx
+}
+
+.choose {
+    left: 74rpx
+}
+
+.box {
+    float: left;
+    top: 85%;
+    width: 33.3%
+}
+
+.album {
+    float: left;
+    height: 88rpx;
+    padding-bottom: 20rpx;
+    padding-left: 60rpx
+}
+
+.album,.switch {
+    margin: 5px auto;
+    padding-top: 24rpx;
+    width: 96rpx
+}
+
+.switch {
+    float: right;
+    height: 76rpx;
+    padding-bottom: 34rpx;
+    padding-right: 40rpx
+}

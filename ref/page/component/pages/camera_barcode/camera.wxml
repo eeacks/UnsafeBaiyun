@@ -1,0 +1,24 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <camera binderror="error" devicePosition="front" flash="auto" style="width:100%;height:{{camera_height}}px;">
+        <cover-view style="height:40rpx;text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20rpx;position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:20rpx;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:20rpx;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:60%;height:20rpx;background-color:rgba(0, 0, 0, .0);position:relative;text-align:center;color:white;font-size:20rpx;"></cover-view>
+        <cover-view style="float:left;width:10%;height:20rpx;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:20rpx;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:70rpx;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:70rpx;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:60%;height:70rpx;background-color:rgba(255, 0, 0, .5);position:relative;text-align:center;color:white;font-size:60rpx;">请拍照刷脸打开</cover-view>
+        <cover-view style="float:left;width:10%;height:70rpx;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:70rpx;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="height:20rpx;text-align:center;background-color:rgba(0, 0, 0, .5);color:red;line-height:20rpx;position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:{{camera_height_inner_01}}px;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="float:left;width:80%;height:800px;background-color:rgba(0, 0, 0, .0);position:relative;"></cover-view>
+        <cover-view style="float:left;width:10%;height:{{camera_height_inner_01}}px;background-color:rgba(0, 0, 0, .5);position:relative;"></cover-view>
+        <cover-view style="bottom:0rpx;width:100%;height:180rpx;text-align:center;background-color:rgba(0, 0, 0, .5);position:fixed;">
+            <cover-image bindtap="takePhoto" src="../../../../image/capture.png" style="display:{{show_button}};width:170rpx;height:170rpx;margin:10rpx auto;"></cover-image>
+        </cover-view>
+    </camera>
+</view>

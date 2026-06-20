@@ -1,0 +1,36 @@
+@import "../../../common/lib/weui.wxss";
+
+.controls {
+    display: -webkit-flex;
+    display: flex;
+    height: 50px;
+    position: relative;
+    top: 0
+}
+
+.pause,.play,.time {
+    -webkit-flex: 1;
+    flex: 1;
+    height: 100%
+}
+
+.time {
+    background-color: rgba(0,0,0,.5);
+    color: red;
+    line-height: 50px;
+    text-align: center
+}
+
+.img {
+    height: 40px;
+    margin: 5px auto;
+    width: 40px
+}
+
+.controls_02 {
+    display: -webkit-flex;
+    display: flex;
+    height: 50px;
+    position: relative;
+    top: 50px
+}

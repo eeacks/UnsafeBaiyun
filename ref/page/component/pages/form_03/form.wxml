@@ -1,0 +1,28 @@
+<view class="block">
+    <view catchtap="ask_share" class="layer-wrap">
+        <image class="layer" src="https://qv1.pinganbaiyun.cn/img/img_009_register/pinganma.png"></image>
+        <view catchtap="show_avator">
+            <image class="item" src="{{avatar}}"></image>
+        </view>
+        <image class="star" src="https://qv1.pinganbaiyun.cn/img/img_009_register/star1.png"></image>
+        <image catchtap="showBigQrCode" class="product" src="{{qr_code}}"></image>
+        <text class="please-use-before">该二维码在{{expire_date}}前有效，失效请重新刷新</text>
+    </view>
+    <mp-halfScreenDialog bindbuttontap="buttontap_confirm_share" buttons="{{buttons_share}}" maskClosable="{{true}}" show="{{show_dialog_share}}" subTitle="" tips="">
+        <view slot="title">您确定分享？</view>
+        <view slot="desc" style="height:400rpx;">
+            <view style="text-align:center;">
+                <image src="https://qv1.pinganbaiyun.cn/img/img_005_room/ask.svg" style="width:75px;height:75px;"></image>
+            </view>
+            <view style="margin-left:30px;margin-top:20px;">您确定分享您的个人信息给好友?</view>
+            <view style="margin-left:30px;margin-buttom:20px;">如您确定分享,您的好友将浏览到您的姓名、身份证、手机号、头像。</view>
+            <view style="margin-left:30px;margin-buttom:20px;">请您谨慎选择</view>
+        </view>
+    </mp-halfScreenDialog>
+    <view class="page">
+        <mp-gallery delete bindchange="change" binddelete="delete" bindhide="hide" current="0" hideOnClick="{{true}}" imgUrls="{{img_urls}}" show="{{show_pb}}" title=""></mp-gallery>
+    </view>
+    <view class="page">
+        <mp-fallery delete bindchange="change" binddelete="delete" bindhide="hide" current="0" hideOnClick="{{true}}" imgUrls="{{img_urls}}" show="{{show_qrpb}}" showText="二维码大图"></mp-fallery>
+    </view>
+</view>

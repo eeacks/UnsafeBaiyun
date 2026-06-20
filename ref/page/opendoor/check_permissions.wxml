@@ -1,0 +1,34 @@
+<view>
+    <view style="margin-top:30rpx;font-size:35rpx;font-weight:bold;">请检查以下权限</view>
+    <view style="margin-top:15rpx;color:gray;font-size:26rpx;">确保已打开必要的功能</view>
+    <view style="background:white;border-radius:20rpx;margin-top:40rpx;margin-right:40rpx;">
+        <view class="check-item">
+            <view>{{phone_location?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="1" style="margin-left:20rpx;">打开手机定位</view>
+        </view>
+        <view class="check-item">
+            <view>{{phone_bluetooth?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="2" style="margin-left:20rpx;text-decoration-line:underline;">打开手机蓝牙</view>
+        </view>
+        <view class="check-item">
+            <view>{{wx_mini_bluetooth?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="3" style="margin-left:20rpx;text-decoration-line:underline;">微信授权此小程序蓝牙权限</view>
+        </view>
+        <view class="check-item" wx:if="{{platform=='ios'}}">
+            <view>{{app_bluetooth?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="4" style="margin-left:20rpx;text-decoration-line:underline;">打开微信蓝牙权限</view>
+        </view>
+        <view class="check-item" wx:if="{{platform!='ios'}}">
+            <view>{{app_location?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="5" style="margin-left:20rpx;text-decoration-line:underline;">打开微信位置信息权限</view>
+        </view>
+        <view class="check-item" wx:if="{{platform!='ios'}}">
+            <view style="color:gray;">{{app_nearby_device?'✅':'❎'}}</view>
+            <view bind:tap="check_auth" data-index="6" style="margin-left:20rpx;text-decoration-line:underline;">{{platform=='android'?'检查微信附近的设备权限是否打开':'检查微信设备发现和连接权限是否打开'}}</view>
+        </view>
+    </view>
+    <view style="color:rgb(228, 121, 121);margin-top:30rpx;font-size:26rpx;margin-left:20rpx;">* 以上设置项有下划线的可点击前往授权</view>
+    <view style="display:flex;flex-direction:row;align-items:center;justify-content:center;">
+        <view bind:tap="backClick" style="margin-top:30rpx;background:#2D9DFE;height:80rpx;line-height:80rpx;border-radius:20rpx;width:35%;color:white;text-align:center;">返回</view>
+    </view>
+</view>

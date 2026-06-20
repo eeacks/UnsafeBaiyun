@@ -1,0 +1,37 @@
+page {
+    background: #050505c5;
+    box-sizing: border-box
+}
+
+.show {
+    overflow: hidden;
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.img {
+    overflow: scroll
+}
+
+.cut {
+    border: 1px dashed hsla(0,0%,100%,.856);
+    height: 100vw;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.bottom,.cut {
+    position: absolute;
+    width: 100vw
+}
+
+.bottom {
+    bottom: 0
+}
+
+wx-button {
+    margin-top: 10rpx
+}

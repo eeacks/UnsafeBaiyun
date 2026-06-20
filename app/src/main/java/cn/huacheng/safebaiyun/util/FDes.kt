@@ -22,6 +22,16 @@ object FDes {
         }
     }
 
+    fun decryptData(data: ByteArray, key: ByteArray): ByteArray {
+        return try {
+            val cipher = Cipher.getInstance("DES/ECB/NoPadding")
+            cipher.init(Cipher.DECRYPT_MODE, generateSecretKeySpec(key))
+            cipher.doFinal(data)
+        } catch (exception: Exception) {
+            byteArrayOf()
+        }
+    }
+
     private fun generateSecretKeySpec(key: ByteArray): SecretKeySpec {
         val keyBytes = ByteArray(8)
         System.arraycopy(key, 0, keyBytes, 0, minOf(key.size, 8))

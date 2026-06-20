@@ -1,0 +1,23 @@
+<scroll-view enableBackToTop scrollY bindscroll="onScroll" class="page page-select-index" scrollIntoView="{{intoView}}" style="height:700rpx;">
+    <view>
+        <slot></slot>
+    </view>
+    <view class="index_list_item" id="{{item.alpha}}" wx:for="{{list}}" wx:key="alpha">
+        <view class="index-group__title font-size-26 tips-color">{{item.alpha}}</view>
+        <view class="index-group__content">
+            <view class="index-group__list">
+                <view bindtap="choose" class="index-group__item thin-border-bottom" data-item="{{subItem}}" hoverClass="bg-highlight" wx:for="{{item.subItems}}" wx:for-item="subItem" wx:key="name">{{subItem.name}}</view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view catchtouchend="removeTouching" catchtouchmove="scrollTo" catchtouchstart="scrollTo" class="anchor-bar__wrp wx-flex">
+    <view class="anchor-bar wx-flex__item" style="position:relative;">
+        <view class="anchor-list " style="position:absolute;top:-84px;right:46rpx;background-color:#E1E1E1;border-radius:30rpx;">
+            <view class="anchor-item {{current==alpha?touching?'selected tapped':'selected':''}}" data-alpha="{{alpha}}" wx:for="{{alphabet}}" wx:for-item="alpha" wx:key="*this">
+                <view class="anchor-item__inner">{{alpha}}</view>
+                <view class="anchor-item__pop">{{alpha}}</view>
+            </view>
+        </view>
+    </view>
+</view>

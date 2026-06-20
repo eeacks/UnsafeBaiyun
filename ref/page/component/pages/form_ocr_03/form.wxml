@@ -1,0 +1,28 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="container">
+    <template is="head" data="{{title:'第三步:身份核验'}}"></template>
+    <view class="page-body">
+        <form catchreset="formReset" catchsubmit="formSubmit">
+            <view class="page-section">
+                <view class="weui-cells__title">将进行基于生物识别的人脸核身</view>
+            </view>
+            <view class="page-section">
+                <radio-group bindchange="radio_change" class="radio-group" style="margin-left:40rpx;" wx:if="{{flag==0}}">
+                    <label class="radio">
+                        <radio checked="{{checked_flash}}" style="float:left;" value="微警认证"></radio>
+                        <view style="float:left;">微警认证</view>
+                        <view style="float:left;margin-left:50rpx;"></view>
+                        <view style="float:left"></view>
+                        <view>
+</view>
+                    </label>
+                </radio-group>
+            </view>
+            <view class="btn-area">
+                <button bindtap="startFacialRecognitionVerify" type="primary">身份核验 Identity verification</button>
+            </view>
+        </form>
+    </view>
+    <template is="foot" data></template>
+</view>

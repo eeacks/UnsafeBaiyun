@@ -65,6 +65,8 @@ dependencies {
     implementation(libs.glance)
     implementation(libs.glance.material)
     implementation(libs.navigation)
+    implementation(libs.zxing.embedded)
+    implementation(libs.zxing.core)
 
 
     testImplementation(libs.junit)

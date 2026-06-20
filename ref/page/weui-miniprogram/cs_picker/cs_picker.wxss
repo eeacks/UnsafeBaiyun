@@ -1,0 +1,95 @@
+.full-box {
+    background: rgba(0,0,0,.4);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all .4s ease-in-out 0;
+    z-index: 9999
+}
+
+.full-box.cur {
+    opacity: 1;
+    pointer-events: auto
+}
+
+.modal {
+    background: transparent;
+    bottom: -50%;
+    height: 50%
+}
+
+.modal,.picker {
+    left: 0;
+    position: absolute;
+    transition: all .4s ease-in-out 0;
+    width: 100%
+}
+
+.picker {
+    background: #fff;
+    bottom: -235px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 235px
+}
+
+.cur .picker {
+    bottom: 0
+}
+
+.cur .modal {
+    bottom: 50%
+}
+
+.picker-line {
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.picker-header,.picker-line {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex
+}
+
+.picker-header {
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    height: 20%;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 0 20rpx
+}
+
+.picker-header wx-view {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.picker-header wx-view wx-text {
+    font-size: 36rpx
+}
+
+.picker-content {
+    -webkit-flex-grow: 1;
+    flex-grow: 1
+}
+
+.line1 {
+    lines: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}

@@ -1,0 +1,274 @@
+page {
+    margin: 0;
+    padding: 0
+}
+
+.flex {
+    display: -webkit-flex;
+    display: flex
+}
+
+.bg_img {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1
+}
+
+.dialog_box {
+    padding: 0 30rpx
+}
+
+.blue_yuan {
+    border-radius: 50%;
+    height: 50rpx;
+    margin-right: 15rpx;
+    width: 50rpx
+}
+
+.text_1 {
+    margin-right: 15rpx
+}
+
+.text_1,.text_2 {
+    font-size: 36rpx
+}
+
+.text_3 {
+    font-size: 42rpx;
+    margin: 10rpx 0
+}
+
+.color_1 {
+    color: #848484;
+    font-size: 32rpx;
+    margin: 5rpx 0
+}
+
+.color_2 {
+    color: #848484;
+    font-size: 26rpx
+}
+
+.color_3 {
+    color: #1c90ff
+}
+
+.id_card_box {
+    border-bottom: 1rpx solid #e2e2e2;
+    border-top: 1rpx solid #e2e2e2;
+    margin: 6rpx 0;
+    padding: 8rpx 0;
+    position: relative
+}
+
+.gh_txt {
+    color: #097be8;
+    position: absolute;
+    right: 50rpx
+}
+
+.mar_r15 {
+    margin-right: 15rpx
+}
+
+.btn_box {
+    margin-top: 50rpx
+}
+
+.btn1 {
+    background-color: #f5f5f5;
+    color: #000
+}
+
+.btn1,.btn2 {
+    height: 86rpx;
+    line-height: 86rpx;
+    width: 36%
+}
+
+.btn2 {
+    background: #1c90ff;
+    color: #fff
+}
+
+.gb_img {
+    height: 60rpx;
+    right: 10rpx;
+    top: 5.1%;
+    width: 60rpx
+}
+
+.agreement_content,.gb_img {
+    position: fixed;
+    z-index: 9999
+}
+
+.agreement_content {
+    background-color: #fff;
+    border-radius: 26rpx;
+    height: 68%;
+    left: 50%;
+    margin-left: -48%;
+    overflow: scroll;
+    padding: 30rpx;
+    top: 10%;
+    width: 88%
+}
+
+.mb {
+    background-color: rgba(0,0,0,.4);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9998
+}
+
+.title {
+    font-size: 38rpx;
+    font-weight: 700;
+    margin-bottom: 5rpx;
+    text-align: center
+}
+
+.agreement_text {
+    font-size: 34rpx;
+    letter-spacing: 6rpx;
+    text-indent: 40rpx
+}
+
+.show-btn {
+    color: #2c2;
+    margin-top: 100rpx
+}
+
+.modal-mask {
+    background: #7f7f7f;
+    color: #fff;
+    height: 100%;
+    opacity: .5;
+    top: 0;
+    width: 100%;
+    z-index: 9000
+}
+
+.modal-dialog,.modal-mask {
+    left: 0;
+    overflow: hidden;
+    position: fixed
+}
+
+.modal-dialog {
+    background: #fff;
+    border-radius: 25rpx;
+    height: 513rpx;
+    margin-left: 58rpx;
+    top: 30%;
+    width: 635rpx;
+    z-index: 9999
+}
+
+.modal-title {
+    padding-top: 50rpx
+}
+
+.modal-title,.modal-title_01 {
+    color: #030303;
+    font-size: 36rpx;
+    text-align: center
+}
+
+.modal-title_01 {
+    padding: 0rpx 32rpx 5rpx
+}
+
+.modal-content {
+    padding: 0rpx 50rpx 30rpx
+}
+
+.modal-input {
+    display: -webkit-flex;
+    display: flex
+}
+
+.input {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 28rpx;
+    height: 82rpx;
+    line-height: 28rpx;
+    padding: 0 20rpx;
+    width: 100%
+}
+
+wx-input-holder {
+    color: #666;
+    font-size: 28rpx
+}
+
+.modal-footer {
+    border-top: 1px solid #dedede;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    font-size: 34rpx
+}
+
+.btn-cancel {
+    border-right: 1px solid #dedede;
+    color: #666
+}
+
+.btn-cancel,.btn-confirm {
+    text-align: center;
+    width: 50%
+}
+
+.btn-confirm {
+    color: #ec5300
+}
+
+.modal_button {
+    margin-bottom: 40rpx;
+    margin-top: 40rpx
+}
+
+.ad_cover {
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    position: fixed;
+    top: 0rpx;
+    width: 100%
+}
+
+.ad_cover_img {
+    z-index: 10
+}
+
+.button_role_confirm {
+    background: linear-gradient(270deg,#006eff,#0af);
+    border-color: #0089ff;
+    border-radius: 35rpx;
+    margin-top: 45rpx
+}
+
+.button_role_cancel,.button_role_confirm {
+    height: 73rpx;
+    line-height: 73rpx;
+    width: 380rpx
+}
+
+.button_role_cancel {
+    background-color: #fff;
+    border-radius: 35rpx;
+    margin-top: 24rpx
+}

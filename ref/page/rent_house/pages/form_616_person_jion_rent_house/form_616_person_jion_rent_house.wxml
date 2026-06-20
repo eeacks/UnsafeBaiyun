@@ -1,0 +1,93 @@
+<view class="container" style="z-index:1;">
+    <view class="index-hd">
+        <image class="index-logo" src="https://qv1.pinganbaiyun.cn/img/icon_04.png"></image>
+        <view class="index-desc" style="font-size:20px;color:#000;">请完善信息</view>
+    </view>
+    <view class="page-body" style="margin-bottom:100rpx;">
+        <form>
+            <view wx:if="{{is_show_perfecting_infomation==true}}">
+                <view class="page-section">
+                    <view class="weui-cells__title" style="font-size:18px;color:#000;">请填写户籍详细地址</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <input autoFocus bindinput="input_parent_address" class="weui-input" placeholder="请填写户籍详细地址" value="{{form_data_perfect_infomation.parent_address}}"></input>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="click_nation" class="page-section">
+                    <view class="weui-cells__title" style="font-size:18px;color:#000;">请选择民族</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input disabled class="weui-input" name="input" style="width:100%;" value="{{form_data_perfect_infomation.nation}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <cs_picker bindcancle="cancle_callback_nation" bindsure="sure_callback_nation" indicatorStyle="height:47px" isShowPicker="{{show_nation}}" listData="{{data_nation}}" scrollType="normal" titleText="请选择民族"></cs_picker>
+            </view>
+            <view>
+                <view class="section">
+                    <view class="weui-cells__title" style="font-size:18px;color:#000;">请选择来穗交通方式</view>
+                    <picker bindchange="bindTransportChange" range="{{data_transprt}}" value="{{data_transprt_index}}">
+                        <view class="picker" style="background-color:#FFF;padding:30rpx 0rpx;">{{data_transprt[data_transprt_index]}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view wx:if="{{1==2&&is_show_add_activity==true}}">
+                <view>
+                    <van-field isLink readonly bindtap="dest_show_picker" label="目的地" placeholder="请选择所在地区" value="{{dest.fieldValue}}"></van-field>
+                    <van-popup round bind:close="hide_picker" show="{{dest.show}}" position="bottom">
+                        <multi-picker active="{{dest.show_level}}" bindclose="dest_hide_picker" bindfinshed="dest_get_return" prop_value="{{dest.address_prop_value}}"></multi-picker>
+                    </van-popup>
+                </view>
+                <view class="page-section">
+                    <view class="weui-cells__title">填写去向地</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <input class="weui-input" placeholder="填写去向地"></input>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="click_jld" class="page-section">
+                    <view class="weui-cells__title">选择落脚点类型</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <view class="weui-cell__bd">
+                                <input disabled class="weui-input" name="input" style="width:100%;" value="{{form_data_activity.ljd_text}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <cs_picker bindcancle="cancle_callback_ljd" bindsure="sure_callback_ljd" indicatorStyle="height:47px" isShowPicker="{{show_ljd}}" listData="{{data_ljd}}" scrollType="normal" titleText="请选择民族"></cs_picker>
+                <view class="page-section">
+                    <view class="weui-cells__title">填写来源地</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <input class="weui-input" placeholder="填写来源地"></input>
+                        </view>
+                    </view>
+                </view>
+                <view class="page-section">
+                    <view class="weui-cells__title">填写来本地目的</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <input class="weui-input" placeholder="填写来本地目的"></input>
+                        </view>
+                    </view>
+                </view>
+                <view class="page-section">
+                    <view class="weui-cells__title">填写备注</view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell weui-cell_input">
+                            <input class="weui-input" placeholder="填写备注"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-area">
+                <button bindtap="submit_apply" type="primary">提交完善信息</button>
+            </view>
+        </form>
+    </view>
+</view>

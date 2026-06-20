@@ -1,0 +1,83 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="box">
+    <image class="layer" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13568_0_1.png"></image>
+    <text class="hd">提交身份信息 ID. info form</text>
+    <form catchreset="formReset" catchsubmit="formSubmit">
+        <view class="bd">
+            <image class="layer" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_0.png"></image>
+            <text class="certificate-type">
+        证件类型ID. type：
+      </text>
+            <view bindtap="bindPickerChange" class="outer">
+                <text class="title">{{array?array:'居民身份证'}}</text>
+                <text class="selection">选择select</text>
+            </view>
+            <view class="line-wrap">
+                <image class="line" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+            </view>
+            <text class="name">姓       名full name：</text>
+            <input bindinput="bindinput_XM" class="please-enter-your-name" placeholder="请输入姓名" value="{{XM}}"></input>
+            <view class="line-wrap-2">
+                <image class="line-2" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+            </view>
+            <text class="i-d-number">证件号码ID.：</text>
+            <input bindblur="bindblur_ZJHM" bindinput="bindinput_ZJHM" class="title-2" placeholder="请输入证件号码" type="{{certificate_type}}" value="{{ZJHM}}"></input>
+            <view class="line-wrap-3">
+                <image class="line-3" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+            </view>
+            <text class="mobile-number">手机号码phone number：</text>
+            <input bindblur="bindblur_mobile_phone" bindinput="bindinput_mobile_phone" class="title-3" disabled="{{mobile_button_disabled}}" placeholder="请输入手机号码" type="number" value="{{mobile_phone}}"></input>
+            <view class="line-wrap-4">
+                <image class="line-4" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+            </view>
+            <view class="" hoverClass="none" hoverStopPropagation="false" wx:if="{{array=='护照passport'}}">
+                <text class="certificate-type guo_title">国籍nationality:</text>
+                <view bindtap="gosearch" class="outer outer_guo">
+                    <input disabled bindblur="bindblur_country" bindtap="gosearch" class="title_input" placeholder="请选择您的国籍select nationality" value="{{searchCountry[country_index]}}"></input>
+                    <text class="selection">选择</text>
+                </view>
+                <view class="line-wrap guoji">
+                    <image class="line" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+                </view>
+            </view>
+            <van-popup bind:close="onClose" customStyle="height: 50%" position="bottom" show="{{show_choose_country}}">
+                <van-search bind:change="SearchCountry" placeholder="请输入搜索关键词"></van-search>
+                <van-picker showToolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{searchCountry}}"></van-picker>
+            </van-popup>
+            <view class="" hoverClass="none" hoverStopPropagation="false" wx:if="{{array=='护照passport'}}">
+                <text class="mobile-number">年       龄age:</text>
+                <input bindblur="bindblur_age" bindinput="bindinput_age" class="title-3" placeholder="请输入年龄please age" type="number" value="{{input_age}}"></input>
+                <view class="line-wrap-4">
+                    <image class="line-4" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+                </view>
+            </view>
+            <text class="certificate-type">住户关系resident relations：</text>
+            <view bindtap="bindPickerChanges" class="outer">
+                <text class="title">{{relationship?relationship:'住户父母parents'}}</text>
+                <text class="selection">选择</text>
+            </view>
+            <view class="line-wrap">
+                <image class="line" src="https://qv1.pinganbaiyun.cn/img/img_001_relative/img_13652_0_1.png"></image>
+            </view>
+            <view bindtap="go_camera" class="submit-outer">
+                <view class="submit-wrap">
+                    <text class="submit">提交</text>
+                </view>
+            </view>
+        </view>
+    </form>
+</view>
+<view bindtap="hideModal_camera" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal_camera}}"></view>
+<view class="modal-dialog" wx:if="{{showModal_camera}}">
+    <view class="modal-title">
+        <image src="https://qv1.pinganbaiyun.cn/img/icon_04.png" style="width:86rpx;height:86rpx;"></image>
+    </view>
+    <view class="modal-title_01">申请获取权限</view>
+    <view class="modal-content">
+        <view class="modal-input">为了真实有效 请授权平安码丨平安白云获取摄像头等权限</view>
+    </view>
+    <view class="modal-footer">
+        <button bindopensetting="get_role_result" class="modal_button" openType="openSetting" style="margin-top:30rpx;margin-buttom:30rpx;width:80%;" type="primary">授权</button>
+    </view>
+</view>

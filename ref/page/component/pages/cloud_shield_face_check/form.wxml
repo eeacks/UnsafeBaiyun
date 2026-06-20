@@ -1,0 +1,25 @@
+<view class="takephoto">
+    <view class="camera">
+        <canvas canvasId="canvasProgressbg" class="progress_bg" style="width:100%;height:{{camera_height}}px;"></canvas>
+        <canvas canvasId="canvasProgress" class="progress_canvas" style="width:100%;height:{{camera_height}}px;"></canvas>
+        <camera binderror="error" bindinitdone="start_camera_frame" devicePosition="front" flash="off" frameSize="small" id="camera" style="width:100%;height:{{camera_height}}px;">
+            <cover-view style="float:left;width:100%;height:{{top_height}}px;background-color:rgba(0, 0, 0, .8);position:relative;"></cover-view>
+            <cover-view style="float:left;width:100%;height:{{name_height}}px;background-color:rgba(0, 0, 0, .8);position:relative;text-align:center;color:white;font-size:80rpx;font-weight:bold;">{{show_msg_name}}</cover-view>
+            <cover-view style="float:left;width:100%;height:{{text_height}}px;background-color:rgba(0, 0, 0, .8);position:relative;text-align:center;color:white;font-size:80rpx;font-weight:bold;">{{show_msg}}</cover-view>
+            <cover-view class="cameracenter-view" style="top:80%;display:{{show_take_photo}};">核验失败 请手工拍照核验</cover-view>
+            <cover-view style="top:85%;width:100%;text-align:center;background-color:rgba(0, 0, 0, .0);position:fixed;display:{{show_take_photo}};">
+                <cover-view class="box">
+                    <cover-image bindtap="chooseimage" class="album" style="display:{{show_button}};"></cover-image>
+                    <cover-view class="choose"></cover-view>
+                </cover-view>
+                <cover-view class="box">
+                    <cover-image bindtap="takePhoto" src="https://qv1.pinganbaiyun.cn/img/img_009_register/capture1.png" style="display:{{show_button}};width:160rpx;height:160rpx;margin:5px auto;float:left;padding-left:60rpx;"></cover-image>
+                </cover-view>
+                <cover-view class="box">
+                    <cover-image bindtap="changedevice" class="switch" style="display:{{show_button}};"></cover-image>
+                    <cover-view class="change"></cover-view>
+                </cover-view>
+            </cover-view>
+        </camera>
+    </view>
+</view>

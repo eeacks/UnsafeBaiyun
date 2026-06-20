@@ -1,0 +1,135 @@
+.weui-cells {
+    background-color: #fff;
+    font-size: 17px;
+    line-height: 1.41176471;
+    margin-top: 8px;
+    position: relative
+}
+
+.weui-cells:before {
+    border-top: 1rpx solid rgba(0,0,0,.1);
+    top: 0
+}
+
+.weui-cells:after,.weui-cells:before {
+    color: rgba(0,0,0,.1);
+    content: " ";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0
+}
+
+.weui-cells:after {
+    border-bottom: 1rpx solid rgba(0,0,0,.1);
+    bottom: 0
+}
+
+.weui-cells__title {
+    color: rgba(0,0,0,.5);
+    font-size: 14px;
+    margin-bottom: 3px;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px
+}
+
+.weui-cells_after-title {
+    margin-top: 0
+}
+
+.weui-cells__tips {
+    color: rgba(0,0,0,.5);
+    font-size: 14px;
+    margin-top: 3px;
+    padding-left: 16px;
+    padding-right: 16px
+}
+
+.weui-cell {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    padding: 16px;
+    position: relative
+}
+
+.weui-cell:before {
+    border-top: 1rpx solid rgba(0,0,0,.1);
+    color: rgba(0,0,0,.1);
+    content: " ";
+    height: 1px;
+    left: 0;
+    left: 16px;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.weui-cell:first-child:before {
+    display: none
+}
+
+.weui-cell_active {
+    background-color: #ececec
+}
+
+.weui-cell_primary {
+    -webkit-align-items: flex-start;
+    align-items: flex-start
+}
+
+.weui-cell__bd {
+    -webkit-flex: 1;
+    flex: 1
+}
+
+.weui-cell__ft {
+    color: rgba(0,0,0,.5);
+    text-align: right
+}
+
+.weui-cell_label-block,.weui-cell_wxss.weui-cell_wxss:before {
+    display: block
+}
+
+.weui-cell_label-block .weui-label {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    width: auto;
+    word-break: normal
+}
+
+.weui-cell_vcode {
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0
+}
+
+.weui-vcode-btn,.weui-vcode-img {
+    height: 3.29411765em;
+    margin-left: 5px;
+    vertical-align: middle
+}
+
+.weui-vcode-btn {
+    border-left: 1rpx solid rgba(0,0,0,.1);
+    color: #576b95;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 3.29411765em;
+    padding: 0 .6em 0 .7em;
+    white-space: nowrap
+}
+
+wx-button.weui-vcode-btn {
+    background-color: initial;
+    border: 0;
+    min-height: 0;
+    outline: 0
+}
+
+.weui-vcode-btn:active {
+    color: #767676
+}

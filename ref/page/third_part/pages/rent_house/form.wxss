@@ -1,0 +1,35 @@
+@import "../../../common/lib/weui.wxss";
+
+wx-label {
+    display: inline-block;
+    margin-right: 20rpx;
+    min-width: 270rpx
+}
+
+wx-form {
+    width: 100%
+}
+
+.picker-text {
+    margin-left: 20rpx;
+    position: relative
+}
+
+.block-2 {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #1b8fff;
+    border-radius: 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 112rpx;
+    left: 50rpx;
+    margin-top: 146rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 100rpx;
+    width: 624rpx;
+    z-index: 99999999
+}

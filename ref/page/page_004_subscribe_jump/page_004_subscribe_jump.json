@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "平安码丨平安白云",
+  "usingComponents": {
+    "mp-toptips": "page/weui-miniprogram/toptips/toptips",
+    "mp-halfScreenDialog": "page/weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  }
+}

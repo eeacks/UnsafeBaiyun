@@ -1,0 +1,167 @@
+.text1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.flyingd-dialog {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    height: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+    left: 50%;
+    margin: 0 auto;
+    max-width: 700px;
+    min-width: 320px;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    z-index: 99
+}
+
+.flex-column,.flyingd-dialog {
+    display: -webkit-flex;
+    display: flex
+}
+
+.flex-column {
+    -webkit-flex-flow: column;
+    flex-flow: column
+}
+
+.flex-auto {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: hidden
+}
+
+.flex-auto > wx-div {
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden
+}
+
+.flyingd-cascader {
+    background-color: #fff;
+    border-top-left-radius: .2rem;
+    border-top-right-radius: .2rem;
+    bottom: -65%;
+    height: 65%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    transition: all 1s;
+    width: 100%
+}
+
+.flyingd-cascader.active {
+    bottom: 0;
+    opacity: 1
+}
+
+.cascader-nav {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    height: 1.2rem;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: .35rem
+}
+
+.cascader-nav wx-span {
+    cursor: pointer;
+    max-width: 2.2rem;
+    min-width: .8rem;
+    padding: 0 .1rem .13rem;
+    position: relative
+}
+
+.cascader-nav .active {
+    color: #5a8eca
+}
+
+.cascader-nav .active::before {
+    background-color: #ec0a0a;
+    border-radius: 50vh;
+    bottom: 0;
+    content: " ";
+    height: .07rem;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: .8rem
+}
+
+.cascader-nav .is-disabled {
+    color: #c0c4cc;
+    cursor: not-allowed
+}
+
+.cascader-body .cascader-menu__item.hovers {
+    background: #e7ebec;
+    color: #409eff
+}
+
+.cascader-body .is-disabled {
+    color: #c0c4cc;
+    cursor: not-allowed
+}
+
+.handleClose {
+    -webkit-align-items: center;
+    align-items: center;
+    color: #909399;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    font-size: .35rem;
+    height: .35rem;
+    justify-items: center;
+    line-height: .35rem;
+    width: .35rem
+}
+
+wx-body,wx-html {
+    font-size: .5rem
+}
+
+.dialog,wx-body,wx-html {
+    margin: 0 auto;
+    max-width: 700px;
+    min-width: 320px
+}
+
+.dialog {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    z-index: 99
+}
+
+.cascader-body .cascader-menu__item {
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    font-size: .5rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 .5rem;
+    width: 100%
+}

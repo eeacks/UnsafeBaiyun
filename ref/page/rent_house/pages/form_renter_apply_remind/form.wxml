@@ -1,0 +1,12 @@
+<import src="../../../common/head.wxml"></import>
+<import src="../../../common/foot.wxml"></import>
+<view class="box01">
+    <view class="box">
+        <text class="hd">您是否订阅住户</text>
+        <text class="hd">审批入住状态提醒</text>
+        <view class="main">
+            <button bindtap="admin_renter_remind" class="title-2">订阅</button>
+        </view>
+    </view>
+</view>
+<template is="foot" data></template>

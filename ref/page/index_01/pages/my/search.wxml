@@ -1,0 +1,109 @@
+<view>
+    <view class="row-align-center" style="width:100%;justify-content:center;margin-top:30rpx;">
+        <view class="row-align-center" style="height:90rpx;background:white;width:95%;border-radius:45rpx;justify-content:space-between;">
+            <view class="row-align-center" style="margin-left:40rpx;width:76%;">
+                <image class="search_image" mode="aspectFit" src="../page_001_welcome_to_baiyun/image/搜索.svg" style="width:30rpx;height:30rpx;margin-right:20rpx;"></image>
+                <input bindinput="handleSearch" placeholder="请输入关键词进行搜索" style="flex:1;" type="text" value="{{search}}"></input>
+            </view>
+            <text bind:tap="doneSearch" style="margin-right:40rpx;color:#2970ED;">搜索</text>
+        </view>
+    </view>
+    <view wx:if="{{search.length==0}}">
+        <view class="row-align-center" style="margin-left:20rpx;margin-top:60rpx;">
+            <image mode="" src="../page_001_welcome_to_baiyun/image/hot_search.svg" style="width:45rpx;height:45rpx;margin-right:10rpx;"></image>
+            <text style="font-size:34rpx;">热门搜索：</text>
+        </view>
+        <view style="margin:25rpx 20rpx;border-radius:20rpx;background:white;font-size:34rpx;">
+            <view bind:tap="item_click" class="row-align-center" data-item="{{item}}" style="justify-content:space-between;padding:12rpx 20rpx;" wx:for="{{top_list}}" wx:for-index="idx" wx:key="idx">
+                <view class="row-align-center">
+                    <text style="color:{{idx>2?'black;':'red;'}}">{{idx+1}}.</text>
+                    <text style="margin-left:50rpx;">{{item.title}}</text>
+                </view>
+                <text style="color:gray;font-size:32rpx;">{{item.sub_title}}</text>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{search.length>0}}">
+        <view class="row-align-center" style="margin-left:20rpx;margin-top:60rpx;"></view>
+        <view style="margin:25rpx 20rpx;border-radius:20rpx;background:white;font-size:34rpx;">
+            <view bind:tap="item_click" class="row-align-center" data-item="{{item}}" style="justify-content:space-between;padding:12rpx 20rpx;" wx:for="{{tempDataList}}" wx:for-index="idx" wx:key="idx">
+                <view class="row-align-center">
+                    <text style="color:{{idx>2?'black;':'red;'}}">{{idx+1}}.</text>
+                    <text style="margin-left:50rpx;">{{item.title}}</text>
+                </view>
+                <text style="color:gray;font-size:32rpx;">{{item.sub_title}}</text>
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="false" class="tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{select_query_type}}">
+        <image class="choose_identity_img" src="{{query_registered_residence}}"></image>
+        <view class="xuan_xinxi">
+            <view bindtap="radio_click1" class="flex huji_box1" data-text="人员查询">
+                <view class="flex1">人员查询</view>
+                <radio checked="{{radio_checked1}}" class="flex2" color="#1C90FF" value="人员查询"></radio>
+            </view>
+            <view bindtap="radio_click2" class="flex huji_box2" data-text="单位查询">
+                <view class="flex1">单位查询</view>
+                <radio checked="{{radio_checked2}}" class="flex2" color="#1C90FF" value="单位查询"></radio>
+            </view>
+        </view>
+        <button bindtap="next_one" class="next_one">下一步</button>
+    </view>
+    <view catchtouchmove="false" class="tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{show_border_cert_sel}}">
+        <image class="choose_identity_img" src="{{temporary_residence_permit}}"></image>
+        <view class="xuan_xinxi">
+            <view bindtap="border_radio_click1" class="flex huji_box1" data-text="白云区户籍人员">
+                <view class="flex1">白云区户籍人员</view>
+                <radio checked="{{border_radio_checked1}}" class="flex2" color="#1C90FF" value="白云区户籍人员"></radio>
+            </view>
+            <view bindtap="border_radio_click2" class="flex huji_box2" data-text="非白云区户籍人员" style="position:relative;">
+                <view class="flex1">非白云区户籍人员</view>
+                <radio checked="{{border_radio_checked2}}" class="flex2" color="#1C90FF" value="非白云区户籍人员"></radio>
+                <view style="position:absolute;top:73rpx;left:0;color:red;font-size:22rpx;">(持白云区居住证)</view>
+            </view>
+        </view>
+        <button bindtap="border_next_one" class="next_one" style="bottom:17rpx;">下一步</button>
+    </view>
+    <view catchtouchmove="false" class="tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{residence_permit_select_type}}">
+        <image class="choose_identity_img" src="{{temporary_residence_permit}}"></image>
+        <view class="xuan_xinxi">
+            <view bindtap="radio_residence_click1" class="flex huji_box1" data-text="预约现场申请">
+                <view class="flex1">预约现场申请<view class="flex1 english">On-site booking application</view>
+                </view>
+                <radio checked="{{residence_permit_checked1}}" class="flex2" color="#1C90FF"></radio>
+            </view>
+            <view bindtap="radio_residence_click2" class="flex huji_box2" data-text="线上申请">
+                <view class="flex1">线上申请<view class="flex1 english">The online application</view>
+                </view>
+                <radio checked="{{residence_permit_checked2}}" class="flex2" color="#1C90FF"></radio>
+            </view>
+        </view>
+        <button bindtap="next_one_two" class="next_one">下一步</button>
+    </view>
+    <view catchtouchmove="false" class="number_tanchuan" hoverClass="none" hoverStopPropagation="false" wx:if="{{number_type}}">
+        <image class="number_type_img" src="{{house_number_type}}"></image>
+        <scroll-view class="number_box" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" scrollY="{{true}}">
+            <view bindtap="number_radio" class="number_flex" data-index="{{index}}" data-title="{{item.title}}" wx:for="{{number_type_datalist}}" wx:key="item">
+                <view class="" hoverClass="none" hoverStopPropagation="false">
+                    <view class="">{{item.title}}</view>
+                    <view class="number_title_name">{{item.title_name}}</view>
+                </view>
+                <radio checked="{{item.checked}}" class="" color="#1C90FF"></radio>
+            </view>
+        </scroll-view>
+        <button bindtap="number_btn" class="number_btn">下一步</button>
+    </view>
+    <view bindtap="guabi_select_query" catchtouchmove="false" class="mb" hoverClass="none" hoverStopPropagation="false" wx:if="{{show_apply_person_type}}"></view>
+    <view bindtap="close_visitor_modal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{show_visitor_modal}}"></view>
+    <view class="modal-dialog" wx:if="{{show_visitor_modal}}">
+        <view>
+            <image class="list_icon" mode="widthFix" src="{{role_header}}" style="width:100%"></image>
+        </view>
+        <view>
+            <navigator appId="wx09105b46430a941a" class="button_role_confirm" extraData="" openType="navigate" path="pages/index/index" plain="true" style="margin-left:45rpx;text-align:center;line-height:73rpx;height:73rpx;color:white;margin-left:126rpx;" target="miniProgram" version="release">我的来访(请点击跳转)</navigator>
+        </view>
+        <view>
+            <button bindtap="close_visitor_modal" class="button_role_cancel" plain="true" style="background-color:white;color:black;border-color:rgb(222,222,222);">取消</button>
+        </view>
+    </view>
+</view>
